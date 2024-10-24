@@ -17,11 +17,11 @@ public class Controlador {
     public String index(Model model) {
         return "index";
     }
-     @GetMapping({"/contacto"})
+     @GetMapping({"/contacto"})//tiene
     public String contacto(Model model) {
         return "contacto";
     }
-     @GetMapping("/menu")
+     @GetMapping("/menu")//tiene
     public String carta(Model model) {
         return "menu";
     }
@@ -31,20 +31,20 @@ public class Controlador {
     public String login(Model model) {
         return "ladmin";
     }
-    @GetMapping("/comentario")
+    @GetMapping("/comentario")//tiene
     public String sugerencias(Model model) {
         return "comentario";
     }
-    @GetMapping("/reclamaciones")
+    @GetMapping("/reclamaciones")//tiene
     public String reclamaciones(Model model) {
         return "reclamaciones";
     }
-    @GetMapping("/fromcompra")
+    @GetMapping("/fromcompra")//tiene
     public String fromclient(Model model) {
         return "fromcompra";
     }
     
-    @RequestMapping("/dataclientfrom")
+    /*@RequestMapping("/dataclientfrom")
     public String dataclientfrom(@RequestParam("nombre") String nombre,
             @RequestParam("apellidos") String apellidos,
             @RequestParam("correo") String correo,
@@ -58,7 +58,7 @@ public class Controlador {
         model.addAttribute("numero", numero);
         model.addAttribute("direccion", direccion);
         return "clienteform";
-    }
+    }*/
     
     @GetMapping("/carrito")
     public String especificaciones(Model model) {

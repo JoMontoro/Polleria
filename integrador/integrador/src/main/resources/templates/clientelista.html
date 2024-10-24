@@ -45,9 +45,9 @@
                     <td th:text="${clientes.direccion}"></td>
                     <td>
                         <!-- Botón para editar -->
-                        <a th:href="@{/getEdit/{cliente_id}(id=${cliente_id})}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/getEdit/} + ${clientes.cliente_id}" class="btn btn-warning btn-sm">Editar</a>
                         <!-- Botón para eliminar -->
-                        <a th:href="@{/delete/{cliente_id}(id=${cliente_id})}" class="btn btn-danger btn-sm"
+                        <a th:href="@{/delete/} + ${clientes.cliente_id}" class="btn btn-danger btn-sm"
                            onclick="return confirm('¿Está seguro de eliminar este cliente?')">Eliminar</a>
                     </td>
                 </tr>

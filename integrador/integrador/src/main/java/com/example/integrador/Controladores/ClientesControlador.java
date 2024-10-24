@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class ClientesControlador {
@@ -46,14 +46,25 @@ public class ClientesControlador {
         }
     }
     
-    @GetMapping("/getEdit/{codigoclientes}")
-    public String editarFormClientes(Model model, @PathVariable("codigoclientes") Long id) {
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    @GetMapping("/getEdit/{cliente_id}")
+    public String editarFormClientes(Model model, @PathVariable("cliente_id") Long id) {
         Clientes clientes = servicioCliente.get(id);
         model.addAttribute("clientes", clientes);
         return "formclientes";
     }
-    @GetMapping("/delete")
-    public String eliminarFormClientes(Model model, @RequestParam("id") Long id) {
+    
+    
+    @GetMapping("/delete/{cliente_id}")
+    public String eliminarFormClientes(Model model, @PathVariable("cliente_id") Long id) {
         servicioCliente.delete(id);
         return "redirect:/clientelista";
     }

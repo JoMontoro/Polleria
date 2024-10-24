@@ -26,43 +26,46 @@
         <!-- Formulario para crear o editar un cliente -->
         <form th:action="@{/registrarclientes}" th:object="${clientes}" method="post" class="needs-validation">
             
+            <input type="hidden" name="cliente_id" th:field="*{cliente_id}">
+            
             <div class="form-group">
                 <!-- Campo para Nombre -->
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" th:field="*{nombre}" class="form-control" placeholder="Nombre" required="true" />
+                <input type="text" id="nombre" th:field="*{nombre}" class="form-control" placeholder="Nombre" required />
                 <div class="invalid-feedback">Por favor, ingrese el nombre.</div>
             </div>
 
             <div class="form-group">
                 <!-- Campo para Apellido -->
                 <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" th:field="*{apellido}" class="form-control" placeholder="Apellido" required="true" />
+                <input type="text" id="apellido" th:field="*{apellido}" class="form-control" placeholder="Apellido" required />
                 <div class="invalid-feedback">Por favor, ingrese el apellido.</div>
             </div>
 
             <div class="form-group">
                 <!-- Campo para Email -->
                 <label for="email">Email:</label>
-                <input type="email" id="email" th:field="*{Correo_Electronico}" class="form-control" placeholder="Correo electrónico" required="true" />
+                <input type="email" id="email" th:field="*{Correo_Electronico}" class="form-control" placeholder="Correo electrónico" required />
                 <div class="invalid-feedback">Por favor, ingrese un correo válido.</div>
             </div>
 
             <div class="form-group">
                 <!-- Campo para Teléfono -->
                 <label for="telefono">Teléfono:</label>
-                <input type="text" id="telefono" th:field="*{telefono}" class="form-control" placeholder="Teléfono" required="true" />
+                <input type="text" id="telefono" th:field="*{telefono}" class="form-control" placeholder="Teléfono" required />
                 <div class="invalid-feedback">Por favor, ingrese un teléfono válido.</div>
             </div>
 
             <div class="form-group">
                 <!-- Campo para Dirección -->
                 <label for="direccion">Dirección:</label>
-                <input type="text" id="direccion" th:field="*{direccion}" class="form-control" placeholder="Dirección"  required="true" />
+                <input type="text" id="direccion" th:field="*{direccion}" class="form-control" placeholder="Dirección"  required />
                 <div class="invalid-feedback">Por favor, ingrese una dirección válida.</div>
             </div>
 
-            <!-- Botón para enviar -->
+            <!-- Botón para enviar y cancelar -->
             <button type="submit" class="btn btn-primary mt-3">Guardar</button>
+            <button type="submit" class="btn btn-danger mt-3"><a th:href="@{/clientelista}" type="submit">Cancelar</a></button>
         </form>
     </body>
 </html>
