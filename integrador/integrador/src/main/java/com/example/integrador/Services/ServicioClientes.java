@@ -36,5 +36,5 @@ public class ServicioClientes {
     public void delete(Long id) {
         clientesDAO.deleteById(id);
     }
-    
+    public void generarExcel(HttpServeletResponse response)
 }

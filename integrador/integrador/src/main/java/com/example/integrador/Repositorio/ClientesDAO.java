@@ -5,6 +5,7 @@
 package com.example.integrador.Repositorio;
 
 import com.example.integrador.Entidades_Model.Clientes;
+import java.io.ByteArrayInputStream;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -12,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author hp
  */
 public interface ClientesDAO extends JpaRepository<Clientes, Long>{
-    
+
 }
