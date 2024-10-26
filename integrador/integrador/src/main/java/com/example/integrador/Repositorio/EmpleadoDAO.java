@@ -4,14 +4,13 @@
  */
 package com.example.integrador.Repositorio;
 
-import com.example.integrador.Entidades_Model.Clientes;
-
+import com.example.integrador.Entidades_Model.Empleados;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author hp
  */
-public interface ClientesDAO extends JpaRepository<Clientes, Long>{
-
+public interface EmpleadoDAO extends JpaRepository<Empleados , Long >{
+    
 }
