@@ -52,7 +52,8 @@
             <div class="form-group">
                 <!-- Campo para Teléfono -->
                 <label for="telefono">Teléfono:</label>
-                <input type="text" id="telefono" th:field="*{telefono}" class="form-control" placeholder="Teléfono" required />
+                <input type="text" id="telefono" th:field="*{telefono}" class="form-control" placeholder="Teléfono" required pattern="[0-9]+" 
+           oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
                 <div class="invalid-feedback">Por favor, ingrese un teléfono válido.</div>
             </div>
 
