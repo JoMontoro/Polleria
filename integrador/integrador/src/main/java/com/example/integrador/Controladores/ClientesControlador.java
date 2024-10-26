@@ -3,6 +3,8 @@ package com.example.integrador.Controladores;
 
 import com.example.integrador.Entidades_Model.Clientes;
 import com.example.integrador.Services.ServicioClientes;
+import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -19,6 +21,15 @@ public class ClientesControlador {
     
     @Autowired
     ServicioClientes servicioCliente;
+    
+    @GetMapping("/excel")
+    public void generarExcelReport(HttpServletResponse response) throws IOException{
+        response.setContentType("application/octet-stream");
+        String headerKey="Content-Disposition";
+        String headerValue="attachment;filename=Clientes.xls";
+        
+        servicioCliente.generarExcel(response);
+    }
     
     @GetMapping("/clientelista")
     public String Clienteslista(Model model) {
@@ -68,6 +79,7 @@ public class ClientesControlador {
         servicioCliente.delete(id);
         return "redirect:/clientelista";
     }
+    
     
     
     
