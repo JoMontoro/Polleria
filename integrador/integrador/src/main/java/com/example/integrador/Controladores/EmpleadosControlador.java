@@ -57,7 +57,7 @@ public class EmpleadosControlador {
     }
     
     
-    @GetMapping("/getEdit/{empleado_id}")
+    @GetMapping("/getEditempleados/{empleado_id}")
     public String editarFormEmpleados(Model model, 
             @PathVariable("empleado_id") Long id) {
         Empleados empleados = servicioempleados.get(id);
@@ -66,7 +66,7 @@ public class EmpleadosControlador {
     }
     
     
-    @GetMapping("/delete/{empleado_id}")
+    @GetMapping("/deleteempleados/{empleado_id}")
     public String eliminarFormEmpleados(Model model, 
             @PathVariable("empleado_id") Long id) {
         servicioempleados.delete(id);

@@ -47,9 +47,9 @@
                     <td th:text="${empleados.correo_electronico}"></td>
                     <td>
                         <!-- Botón para editar -->
-                        <a th:href="@{/getEdit/} + ${empleados.empleado_id}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/getEditempleados/} + ${empleados.empleado_id}" class="btn btn-warning btn-sm">Editar</a>
                         <!-- Botón para eliminar -->
-                        <a th:href="@{/delete/} + ${empleados.empleado_id}" class="btn btn-danger btn-sm"
+                        <a th:href="@{/deleteempleados/} + ${empleados.empleado_id}" class="btn btn-danger btn-sm"
                            onclick="return confirm('¿Está seguro de eliminar este empleado?')">Eliminar</a>
                     </td>
                 </tr>
