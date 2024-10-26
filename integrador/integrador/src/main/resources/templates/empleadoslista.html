@@ -37,7 +37,7 @@
             </thead>
             <tbody>
                 <tr th:each="empleados : ${lista}">
-                    <td th:text="${empleados.id_empleado}"></td>
+                    <td th:text="${empleados.empleado_id}"></td>
                     <td th:text="${empleados.nombre}"></td>
                     <td th:text="${empleados.apellido}"></td>
                     <td th:text="${empleados.Dni}"></td>
@@ -45,9 +45,9 @@
                     <td th:text="${empleados.email}"></td>
                     <td>
                         <!-- Botón para editar -->
-                        <a th:href="@{/getEdit/} + ${empledos.id_empleado}" class="btn btn-warning btn-sm">Editar</a>
+                        <a th:href="@{/getEdit/} + ${empledos.empleado_id}" class="btn btn-warning btn-sm">Editar</a>
                         <!-- Botón para eliminar -->
-                        <a th:href="@{/delete/} + ${empledos.id_empleado}" class="btn btn-danger btn-sm"
+                        <a th:href="@{/delete/} + ${empledos.empleado_id}" class="btn btn-danger btn-sm"
                            onclick="return confirm('¿Está seguro de eliminar este cliente?')">Eliminar</a>
                     </td>
                 </tr>

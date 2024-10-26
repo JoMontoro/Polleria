@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class Empleados {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id_empleado;
+    private Long empleado_id;
     
     private String nombre;
     private String apellido;

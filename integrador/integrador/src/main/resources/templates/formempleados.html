@@ -26,7 +26,7 @@
         <!-- Formulario para crear o editar un cliente -->
         <form th:action="@{/registrarempleados}" th:object="${empleados}" method="post" class="needs-validation">
             
-            <input type="hidden" name="id_empleado" th:field="*{id_empleado}">
+            <input type="hidden" name="empleado_id" th:field="*{empleado_id}">
             
             <div class="form-group">
                 <!-- Campo para Nombre -->

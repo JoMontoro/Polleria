@@ -57,26 +57,18 @@ public class EmpleadosControlador {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    @GetMapping("/getEdit/{id_empleado}")
-    public String editarFormEmpleados(Model model, @PathVariable("id_empleado") Long id) {
+    @GetMapping("/getEdit/{empleado_id}")
+    public String editarFormEmpleados(Model model, @PathVariable("empleado_id") Long id) {
         Empleados empleados = servicioempleados.get(id);
         model.addAttribute("empleados", empleados);
         return "formempleados";
     }
     
     
-    @GetMapping("/delete/{id_empleado}")
-    public String eliminarFormEmpleados(Model model, @PathVariable("cliente_id") Long id) {
+    @GetMapping("/delete/{empleado_id}")
+    public String eliminarFormEmpleados(Model model, @PathVariable("empleado_id") Long id) {
         servicioempleados.delete(id);
-        return "redirect:/empledoslista";
+        return "redirect:/empleadoslista";
     }
     
     
