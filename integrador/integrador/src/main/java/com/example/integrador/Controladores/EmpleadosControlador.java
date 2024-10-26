@@ -58,7 +58,8 @@ public class EmpleadosControlador {
     
     
     @GetMapping("/getEdit/{empleado_id}")
-    public String editarFormEmpleados(Model model, @PathVariable("empleado_id") Long id) {
+    public String editarFormEmpleados(Model model, 
+            @PathVariable("empleado_id") Long id) {
         Empleados empleados = servicioempleados.get(id);
         model.addAttribute("empleados", empleados);
         return "formempleados";
@@ -66,7 +67,8 @@ public class EmpleadosControlador {
     
     
     @GetMapping("/delete/{empleado_id}")
-    public String eliminarFormEmpleados(Model model, @PathVariable("empleado_id") Long id) {
+    public String eliminarFormEmpleados(Model model, 
+            @PathVariable("empleado_id") Long id) {
         servicioempleados.delete(id);
         return "redirect:/empleadoslista";
     }
