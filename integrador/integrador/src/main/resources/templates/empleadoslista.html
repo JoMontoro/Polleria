@@ -22,6 +22,38 @@
         <!-- Botón para agregar clientes -->
         <a th:href="@{/formempleados}" class="btn btn-success mb-3">Agregar Cliente</a>
 
- 
+        <!-- Tabla con estilos de Bootstrap -->
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>DNI</th>
+                    <th>Cargo</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="empleados : ${lista}">
+                    <td th:text="${empleados.empleado_id}"></td>
+                    <td th:text="${empleados.nombre}"></td>
+                    <td th:text="${empleados.apellido}"></td>
+                    <td th:text="${empleados.dni}"></td>
+                    <td th:text="${empleados.cargo}"></td>
+                     <td th:text="${empleados.telefono}"></td>
+                    <td th:text="${empleados.correo_electronico}"></td>
+                    <td>
+                        <!-- Botón para editar -->
+                        <a th:href="@{/getEdit/} + ${empledos.empleado_id}" class="btn btn-warning btn-sm">Editar</a>
+                        <!-- Botón para eliminar -->
+                        <a th:href="@{/delete/} + ${empledos.empleado_id}" class="btn btn-danger btn-sm"
+                           onclick="return confirm('¿Está seguro de eliminar este cliente?')">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>
