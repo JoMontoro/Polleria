@@ -46,18 +46,24 @@
                 <!-- Campo para Email -->
                 <label for="Dni">DNI:</label>
                 <input type="Dni" id="Dni" th:field="*{Dni}" class="form-control" placeholder="Dni" required />
-                <div class="invalid-feedback">Por favor, ingrese un correo válido.</div>
+                <div class="invalid-feedback">Por favor, ingrese un dni válido.</div>
             </div>
               <div class="form-group">
                 <!-- Campo para Email -->
                 <label for="cargo">Cargo:</label>
                 <input type="cargo" id="cargo" th:field="*{cargo}" class="form-control" placeholder="cargo" required />
-                <div class="invalid-feedback">Por favor, ingrese un correo válido.</div>
+                <div class="invalid-feedback">Por favor, ingrese un cargo válido.</div>
+            </div>
+            <div class="form-group">
+                <!-- Campo para Email -->
+                <label for="telefono">Telefono:</label>
+                <input type="telefono" id="cargo" th:field="*{telefono}" class="form-control" placeholder="telefono" required />
+                <div class="invalid-feedback">Por favor, ingrese un telefono válido.</div>
             </div>
             <div class="form-group">
                 <!-- Campo para Email -->
                 <label for="email">Email:</label>
-                <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="email" required />
+                <input type="email" id="email" th:field="*{correo_electronico}" class="form-control" placeholder="email" required />
                 <div class="invalid-feedback">Por favor, ingrese un correo válido.</div>
             </div>
 

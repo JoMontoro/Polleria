@@ -28,8 +28,9 @@ public class Empleados {
     
     private String nombre;
     private String apellido;
-    private String Dni;
+    private String dni;
     private String cargo;
-    private String email;
+    private String telefono;
+    private String correo_electronico;
     
 }

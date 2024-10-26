@@ -31,6 +31,7 @@
                     <th>Apellido</th>
                     <th>DNI</th>
                     <th>Cargo</th>
+                    <th>Telefono</th>
                     <th>Email</th>
                     <th>Acción</th>
                 </tr>
@@ -42,7 +43,8 @@
                     <td th:text="${empleados.apellido}"></td>
                     <td th:text="${empleados.Dni}"></td>
                     <td th:text="${empleados.cargo}"></td>
-                    <td th:text="${empleados.email}"></td>
+                     <td th:text="${empleados.telefono}"></td>
+                    <td th:text="${empleados.correo_electronico}"></td>
                     <td>
                         <!-- Botón para editar -->
                         <a th:href="@{/getEdit/} + ${empledos.empleado_id}" class="btn btn-warning btn-sm">Editar</a>
