@@ -30,12 +30,12 @@ public class EmpleadosControlador {
         servicioCliente.generarExcel(response);
     }
     */
-    @GetMapping("/empledoslista")
+    @GetMapping("/empleadoslista")
     public String Empleadoslista(Model model) {
         List<Empleados> lista = servicioempleados.getList();
         model.addAttribute("lista", lista);
         
-        return "empledoslista";
+        return "empleadoslista";
     }
     
     @GetMapping("/formempleados")
@@ -48,7 +48,7 @@ public class EmpleadosControlador {
     public String registrarEmpleados(@ModelAttribute Empleados empleados, Model model) {
         try {
             servicioempleados.save(empleados);
-            return "redirect:/empledoslista";
+            return "redirect:/empleadoslista";
         } catch (DataIntegrityViolationException e) {
             model.addAttribute("errorMessage", e.getMessage().toString());
             model.addAttribute("empleados", empleados);
