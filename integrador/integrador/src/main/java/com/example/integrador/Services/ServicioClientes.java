@@ -2,8 +2,9 @@ package com.example.integrador.Services;
 
 import com.example.integrador.Entidades_Model.Clientes;
 import com.example.integrador.Repositorio.ClientesDAO;
-import jakarta.servlet.ServletOutputStream;
-import jakarta.servlet.http.HttpServletResponse;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.List;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -43,18 +44,18 @@ public class ServicioClientes {
         clientesDAO.deleteById(id);
     }
 
-    public void generarExcel(HttpServletResponse response) throws IOException {
+    public ByteArrayInputStream generarExcel() throws IOException {
         List<Clientes> clientes = clientesDAO.findAll();
         HSSFWorkbook workbook = new HSSFWorkbook();
         HSSFSheet sheet = workbook.createSheet("Cliente Info");
         HSSFRow row = sheet.createRow(0);
 
         row.createCell(0).setCellValue("cliente_id");
-        row.createCell(0).setCellValue("nombre");
-        row.createCell(0).setCellValue("apellido");
-        row.createCell(0).setCellValue("Correo_Electronico");
-        row.createCell(0).setCellValue("telefono");
-        row.createCell(0).setCellValue("direccion");
+        row.createCell(1).setCellValue("nombre");
+        row.createCell(2).setCellValue("apellido");
+        row.createCell(3).setCellValue("Correo_Electronico");
+        row.createCell(4).setCellValue("telefono");
+        row.createCell(5).setCellValue("direccion");
 
         int dataRowIndex = 1;
         for (Clientes cliente : clientes) {
@@ -67,9 +68,10 @@ public class ServicioClientes {
             dataRow.createCell(5).setCellValue(cliente.getDireccion());
             dataRowIndex ++;
         }
-        ServletOutputStream ops=response.getOutputStream();
+        ByteArrayOutputStream ops= new ByteArrayOutputStream();
         workbook.write(ops);
         workbook.close();
         ops.close();
+        return new ByteArrayInputStream(ops.toByteArray());
     }
 }
