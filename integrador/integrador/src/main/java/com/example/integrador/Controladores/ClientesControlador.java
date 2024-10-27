@@ -3,7 +3,6 @@ package com.example.integrador.Controladores;
 
 import com.example.integrador.Entidades_Model.Clientes;
 import com.example.integrador.Services.ServicioClientes;
-import jakarta.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.List;
@@ -26,14 +25,7 @@ public class ClientesControlador {
     @Autowired
     ServicioClientes servicioCliente;
     
-    /*@GetMapping("/excel")
-    public void generarExcelReport(HttpServletResponse response) throws IOException{
-        response.setContentType("application/octet-stream");
-        String headerKey="Content-Disposition";
-        String headerValue="attachment;filename=Clientes.xls";
-        
-        //servicioCliente.generarExcel(response);
-    }*/
+   
     @GetMapping("/excelx")
     public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
         ByteArrayInputStream flujo = servicioCliente.generarExcel();
