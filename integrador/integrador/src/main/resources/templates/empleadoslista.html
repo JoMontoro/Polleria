@@ -17,11 +17,15 @@
         <link rel="icon" href="img/favicon.ico" type="image/pizza-icon">
     </head>
     <body class="container mt-5">
-        <h1 class="mb-4">Lista de Clientes</h1>
-
+        <h1 class="mb-4">Lista de Empelado</h1>
+ <!-- Botones para listas -->
+        <a th:href="@{/cheflista}" class="btn btn-success mb-3">Lista Chefs</a>
+         <a th:href="@{/clientelista}" class="btn btn-success mb-3">Lista Clientes</a>
+         
+         <br> 
         <!-- Botón para agregar clientes -->
-        <a th:href="@{/formempleados}" class="btn btn-success mb-3">Agregar Cliente</a>
-
+        <a th:href="@{/formempleados}" class="btn btn-success mb-3">Agregar Empleado</a>
+        <a th:href="@{/excele}" class="btn btn-success mb-3">Excel</a>
         <!-- Tabla con estilos de Bootstrap -->
         <table class="table table-striped table-hover">
             <thead class="thead-dark">
