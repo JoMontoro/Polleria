@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.example.integrador.Entidades_Model;
 
 
@@ -18,18 +15,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table (name = "empleados")
-public class Empleados {
+@Table (name = "Chefs")
+public class Chefs {
     @Id
-   
+    
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long empleado_id;
+       private Long chefid;
     
     private String nombre;
     private String apellido;
-    private String dni;
-    private String cargo;
+    private String especialidad;
     private String telefono;
     private String correo_electronico;
+    
     
 }
