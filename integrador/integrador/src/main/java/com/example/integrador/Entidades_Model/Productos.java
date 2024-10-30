@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package com.example.integrador.Entidades_Model;
 
 import jakarta.persistence.Entity;
@@ -22,12 +19,13 @@ import lombok.NoArgsConstructor;
 public class Productos {
      @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id_productos;
+    private Long producto_id;
     
-    private String nombre;
+    private String nombre_producto;
     private String descripcion;
     private Long precio;
     private Integer stock;
-    private Long id_proveedor;
-     private Long id_almacen;
+    private Long proveedor_id;
+    private Long almacen_id;
+    private String imagen_url;
 }
