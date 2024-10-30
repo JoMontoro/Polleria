@@ -1,0 +1,30 @@
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.sidebar p {
+    font-size: 0.8rem;
+    margin-top: -5px;
+}
+
+
+
+.icon-box {
+    color: white;
+}
+
+.icon-box h5 {
+    margin: 10px 0 5px;
+}
+
+/* Reservation Table Styling */
+table th, table td {
+    text-align: center;
+}

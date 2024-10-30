@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Restaurante</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/listageneral.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="sidebar bg-dark text-white p-3">
+            <div class="text-center mb-4">
+                <img src="img/Component 19.png" alt="Logo" class="img-fluid" style="max-width: 80px;">
+                <h2>Giancarlo</h2>
+                <p>Pato a la Reina</p>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active text-white" th:href="@{/listageneral}">Listas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/clientelista}">Gestión de Clientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/empleadoslista}">Gestión de Empleados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" th:href="@{/cheflista}">Reporte de Chefs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">Gestión de Almacén</a>
+                </li>
+            </ul>
+            <button class="btn btn-warning mt-4 w-100">Cerrar Sesión</button>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="content flex-grow-1 p-4">
+            <header class="d-flex justify-content-between align-items-center mb-3">
+                <h1>Reservas Próximas</h1>
+                <span>Bienvenido, Mario <i class="bi bi-person"></i></span>
+            </header>
+
+            <!-- Icons Section -->
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <div class="icon-box bg-warning p-3 rounded">
+                        <i class="bi bi-person-fill"></i>
+                        <h5>Clientes</h5>
+                        <a class="btn btn-primary mt-2" th:href="@{/clientelista}">Gestionar Clientes</a>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="icon-box bg-danger p-3 rounded">
+                        <i class="bi bi-calendar-event-fill"></i>
+                        <h5>Empleados</h5>
+                        <a class="btn btn-primary mt-2" th:href="@{/empleadoslista}">Gestionar Empleados</a>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <div class="icon-box bg-warning p-3 rounded">
+                        <i class="bi bi-house-fill"></i>
+                        <h5>Chefs</h5>
+                        <a th:href="@{/empleadoslista}" class="btn btn-primary mt-2">Gestionar Chefs</a>
+                    </div>
+                </div>
+            </div>
+
+           
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>    
+</body>
+</html>

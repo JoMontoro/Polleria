@@ -12,10 +12,13 @@ public class Controlador {
     public String index() {
         return "index";
     }
-
-    @GetMapping("/index")
+ @GetMapping("/index")
     public String index(Model model) {
         return "index";
+    }
+    @GetMapping("/listageneral")
+    public String listageneral(Model model) {
+        return "listageneral";
     }
      @GetMapping({"/contacto"})//tiene
     public String contacto(Model model) {
@@ -65,4 +68,8 @@ public class Controlador {
         return "carrito";
     }
     
+    @GetMapping("/nuevoProducto")
+    public String mostrarFormularioNuevoProducto(Model model) {
+        return "nuevoProducto"; // El nombre del archivo HTML que muestra el formulario
+    }
 }
