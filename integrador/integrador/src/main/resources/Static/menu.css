@@ -1,0 +1,70 @@
+@import "navbar-footer.css";
+
+/* Estilo del contenedor principal */
+.container {
+    padding-top: 20px;
+}
+
+/* Tarjeta del producto */
+.product-card {
+    max-width: 300px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+/* Imagen del producto */
+.product-img {
+    width: 50%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+/* Título del producto */
+.product-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Descripción del producto */
+.product-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* Precio del producto */
+.product-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #e63946;
+    margin-bottom: 15px;
+}
+
+/* Botón de carrito */
+.btn-cart {
+    background-color: #ffcc00;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 50%;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.btn-cart:hover {
+    background-color: #e6b800;
+    color: #fff;
+}
