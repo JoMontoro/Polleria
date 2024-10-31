@@ -20,32 +20,43 @@ public class SecurityConfiguration {
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(UsuarioServicio usuarioServicio) {
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(usuarioServicio);
-        auth.setPasswordEncoder(passwordEncoder());
-        return auth;
-    }
-
-    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/registro/**", "/js/**", "/css/**", "/img/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .formLogin(form -> form
-                        .permitAll()
-                        .defaultSuccessUrl("/clientelista", true)
-                )
-                .logout(logout -> logout
-                        .invalidateHttpSession(true)
-                        .clearAuthentication(true)
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/login?logout")
-                        .permitAll()
-                );
+            .csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(authz -> authz
+                .requestMatchers(
+                    "/",
+                    "/index",
+                    "/js/**", 
+                    "/css/**", 
+                    "/img/**",
+                    "/styles/**",
+                    "/fragments/**",
+                    "/error",
+                    "/contacto",
+                    "/menu",
+                    "/carta",
+                    "/carrito",
+                    "/login",
+                    "/registro"
+                ).permitAll()
+                .requestMatchers("/listageneral/**").authenticated()
+                .anyRequest().permitAll()
+            )
+            .formLogin(form -> form
+                .loginPage("/login")
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/listageneral", true)
+                .failureUrl("/login?error=true")
+                .permitAll()
+            )
+            .logout(logout -> logout
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/login?logout=true")
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
+                .permitAll()
+            );
 
         return http.build();
     }

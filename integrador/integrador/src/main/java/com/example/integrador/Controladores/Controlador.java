@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Controlador {
 
     @GetMapping("/")
-    public String mostrarIndex() {  // Cambiado nombre del método a mostrarIndex
+    public String mostrarIndex() {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/index")
-    public String mostrarIndexConModelo(Model model) {  // Cambiado nombre del método a mostrarIndexConModelo
+    public String mostrarIndexConModelo(Model model) {
         return "index";
     }
 
@@ -28,7 +33,7 @@ public class Controlador {
     }
 
     @GetMapping("/ladmin")
-    public String login(Model model) {
+    public String ladmin(Model model) {  // Cambié el nombre del método para evitar duplicación
         return "ladmin";
     }
 
