@@ -14,9 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&display=swap"
           rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="Style/index.css">
-    <link rel="stylesheet" href="Style/menu.css">
-    <link rel="stylesheet" href="Style/navbar-footer.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/navbar-footer.css">
 
 </head>
 
@@ -34,7 +34,8 @@
         <div class="row g-3">
             <div th:each="producto : ${productos}" class="col-12 col-md-6 col-xl-4 d-flex justify-content-center">
                 <div class="card product-card">
-                    <img th:src="@{uploads/${producto.imagen_url}}" class="card-img-top" alt="...">
+                    <!-- Modificar la línea de la imagen -->
+                    <img th:src="@{/img/uploads/} + ${producto.imagen_url}" class="card-img-top" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title product-title" th:text="${producto.nombre_producto}">Nombre del Producto</h5>
                         <p class="product-description" th:text="${producto.descripcion}">Descripción del Producto</p>

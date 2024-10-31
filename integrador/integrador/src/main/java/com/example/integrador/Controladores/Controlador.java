@@ -24,10 +24,10 @@ public class Controlador {
     public String contacto(Model model) {
         return "contacto";
     }
-     @GetMapping("/menu")//tiene
-    public String carta(Model model) {
-        return "menu";
-    }
+//     @GetMapping("/menu")//tiene
+//    public String carta(Model model) {
+//        return "menu";
+//    }
 
     
      @GetMapping("/ladmin")
@@ -68,8 +68,8 @@ public class Controlador {
         return "carrito";
     }
     
-    @GetMapping("/nuevoProducto")
-    public String mostrarFormularioNuevoProducto(Model model) {
-        return "nuevoProducto"; // El nombre del archivo HTML que muestra el formulario
-    }
+//    @GetMapping("/nuevoProducto")
+//    public String mostrarFormularioNuevoProducto(Model model) {
+//        return "nuevoProducto"; // El nombre del archivo HTML que muestra el formulario
+//    }
 }
