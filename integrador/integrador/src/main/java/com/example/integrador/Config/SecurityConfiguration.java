@@ -24,6 +24,7 @@ public class SecurityConfiguration {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
+                // Rutas públicas
                 .requestMatchers(
                     "/",
                     "/index",
@@ -40,7 +41,28 @@ public class SecurityConfiguration {
                     "/login",
                     "/registro"
                 ).permitAll()
-                .requestMatchers("/listageneral/**").authenticated()
+                // Rutas protegidas que requieren autenticación
+                .requestMatchers(
+                    "/listageneral/**",
+                    "/clientelista/**",
+                    "/empleadoslista/**",
+                    "/cheflista/**",
+                    "/formclientes/**",
+                    "/formempleados/**",
+                    "/formchef/**",
+                    "/registrarclientes/**",
+                    "/registrarempleados/**",
+                    "/registrarchef/**",
+                    "/getEdit/**",
+                    "/getEditempleados/**",
+                    "/getEditchefs/**",
+                    "/delete/**",
+                    "/deleteempleados/**",
+                    "/deletechefs/**",
+                    "/excelx/**",
+                    "/excele/**",
+                    "/excelc/**"
+                ).authenticated()
                 .anyRequest().permitAll()
             )
             .formLogin(form -> form
