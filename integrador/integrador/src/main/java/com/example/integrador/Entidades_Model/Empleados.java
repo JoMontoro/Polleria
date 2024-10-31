@@ -4,6 +4,7 @@
  */
 package com.example.integrador.Entidades_Model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -17,17 +18,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
 @Table (name = "empleados")
 public class Empleados {
     @Id
+   
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long id_empleado;
+    private Long empleado_id;
     
     private String nombre;
     private String apellido;
-    private String Dni;
+    private String dni;
     private String cargo;
-    private String email;
+    private String telefono;
+    private String correo_electronico;
     
 }

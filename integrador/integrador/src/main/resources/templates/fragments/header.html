@@ -1,0 +1,41 @@
+<!-- Header -->
+<div th:fragment="header" class="container-fluid m-0 p-0">
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-md">
+        <div class="container-fluid">
+            <!-- Logotipo -->
+            <a class="navbar-brand" th:href="@{/}" >
+                <img src="img/logo_pollito.png" alt="Logo">
+            </a>
+
+            <!-- Barra de búsqueda -->
+            <div class="search-container">
+                <img src="img/Lupa.png" alt="Buscar">
+                <input type="text" placeholder="Buscar...">
+            </div>
+
+            <!-- Enlaces del menú -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" th:href="@{/menu}">Carta</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/carta}">Promociones</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/menu}">Parada 69 Gian'</a></li>
+                </ul>
+            </div>
+
+            <!-- Iconos de usuario y carrito -->
+            <div class="navbar-icons">
+                <a th:href="@{/login}" ><img src="img/user.png" alt="Usuario"></a>
+                <a th:href="@{/carrito}" class="cart-icon">
+                    <img src="img/carrito.png" alt="Carrito">
+                    <span class="cart-counter">0</span>
+                </a>
+                <!-- Botón de alternar -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+</div>
