@@ -1,6 +1,6 @@
 /* Estilos para el fondo */
 body {
-    background-image: url('../img/Parrilas.png'); /* Cambiado a Parrilas.png */
+    background-image: url('../img/Parrilas.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -8,7 +8,6 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 /* Overlay para el fondo */
@@ -49,25 +48,44 @@ body::before {
     font-family: 'Montagu Slab', serif;
 }
 
+/* Estilos para el logo del login */
+.login-logo {
+    width: 300px;
+    height: auto;
+    opacity: 0.95;
+    margin-bottom: 0.2rem; /* Reducido el margen inferior */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+}
+
 /* Estilos para el formulario */
 .card {
     border: none;
     border-radius: 15px;
-    background: rgba(255, 255, 255, 0.95);
+    background: #8B0000;
     transition: transform 0.3s ease;
-    margin-bottom: 3rem; /* Espacio para el footer */
+    margin-bottom: 2rem; /* Reducido el margen inferior */
+    overflow: hidden;
 }
 
 .card-body {
-    padding: 3rem !important;
+    padding: 1rem 1rem !important; /* Reducido el padding vertical */
 }
 
 .card-title {
-    color: #333;
+    margin-top: 0;
+    margin-bottom: 0.75rem; /* Reducido el margen inferior */
+    font-size: 1.75rem;
+}
+
+.input-group {
+    margin-bottom: 0.75rem; /* Reducido el espacio entre inputs */
 }
 
 .input-group-text {
-    background: transparent;
+    background: white;
     border-right: none;
 }
 
@@ -83,7 +101,8 @@ body::before {
 .btn-primary {
     background-color: #d32f2f;
     border-color: #d32f2f;
-    padding: 12px;
+    padding: 10px; /* Reducido el padding */
+    margin-bottom: 0.5rem; /* Reducido el espacio entre botones */
 }
 
 .btn-primary:hover {
@@ -91,8 +110,8 @@ body::before {
     border-color: #b71c1c;
 }
 
-.btn-outline-secondary {
-    padding: 12px;
+.btn-outline-light {
+    padding: 10px; /* Reducido el padding */
 }
 
 /* Efectos hover */
@@ -109,31 +128,50 @@ body::before {
 }
 
 .input-group:focus-within {
-    box-shadow: 0 0 10px rgba(211, 47, 47, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 /* Estilos para labels y texto */
 .form-label {
-    color: #333;
     font-weight: 500;
+    margin-bottom: 0.3rem; /* Reducido el espacio bajo las etiquetas */
 }
 
 /* Ajustes para el footer */
 .footer {
-    margin-top: auto; /* Empuja el footer al fondo */
+    margin-top: auto;
     background-color: rgba(28, 28, 28, 0.9);
     width: 100%;
 }
 
 /* Contenedor principal */
 .container {
-    flex: 1 0 auto; /* Permite que el contenedor crezca pero no se encoja */
+    flex: 1 0 auto;
+}
+
+/* Estilos para los mensajes de alerta */
+.alert {
+    margin-bottom: 0.75rem; /* Reducido el margen */
+    padding: 0.5rem 1rem; /* Reducido el padding */
+    border-radius: 8px;
+}
+
+.alert-danger {
+    background-color: rgba(220, 53, 69, 0.9);
+    border-color: #dc3545;
+    color: white;
+}
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.9);
+    border-color: #28a745;
+    color: white;
 }
 
 /* Media queries para responsividad */
 @media (max-width: 768px) {
     .card-body {
-        padding: 2rem !important;
+        padding: 1rem 1rem !important;
     }
     
     .logo-img {
@@ -142,5 +180,36 @@ body::before {
     
     .brand-name {
         font-size: 1.2rem;
+    }
+    
+    .login-logo {
+        width: 250px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .btn {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .login-logo {
+        width: 200px;
+    }
+
+    .card-body {
+        padding: 0.75rem !important;
+    }
+
+    .form-label {
+        font-size: 0.9rem;
     }
 }
