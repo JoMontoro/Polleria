@@ -1,0 +1,146 @@
+/* Estilos para el fondo */
+body {
+    background-image: url('../img/Parrilas.png'); /* Cambiado a Parrilas.png */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Overlay para el fondo */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(28, 28, 28, 0.9) 0%, rgba(45, 45, 45, 0.8) 100%);
+    z-index: -1;
+}
+
+/* Estilos para el header */
+.navbar {
+    background-color: rgba(28, 28, 28, 0.9);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.navbar-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-img {
+    max-height: 80px;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+.brand-name {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+    font-family: 'Montagu Slab', serif;
+}
+
+/* Estilos para el formulario */
+.card {
+    border: none;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    transition: transform 0.3s ease;
+    margin-bottom: 3rem; /* Espacio para el footer */
+}
+
+.card-body {
+    padding: 3rem !important;
+}
+
+.card-title {
+    color: #333;
+}
+
+.input-group-text {
+    background: transparent;
+    border-right: none;
+}
+
+.form-control {
+    border-left: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+.btn-primary {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+    padding: 12px;
+}
+
+.btn-primary:hover {
+    background-color: #b71c1c;
+    border-color: #b71c1c;
+}
+
+.btn-outline-secondary {
+    padding: 12px;
+}
+
+/* Efectos hover */
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.input-group {
+    transition: all 0.3s ease;
+}
+
+.input-group:focus-within {
+    box-shadow: 0 0 10px rgba(211, 47, 47, 0.2);
+}
+
+/* Estilos para labels y texto */
+.form-label {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Ajustes para el footer */
+.footer {
+    margin-top: auto; /* Empuja el footer al fondo */
+    background-color: rgba(28, 28, 28, 0.9);
+    width: 100%;
+}
+
+/* Contenedor principal */
+.container {
+    flex: 1 0 auto; /* Permite que el contenedor crezca pero no se encoja */
+}
+
+/* Media queries para responsividad */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 2rem !important;
+    }
+    
+    .logo-img {
+        max-height: 60px;
+    }
+    
+    .brand-name {
+        font-size: 1.2rem;
+    }
+}
