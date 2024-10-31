@@ -3,9 +3,14 @@ package com.example.integrador.Controladores;
 
 import com.example.integrador.Entidades_Model.Clientes;
 import com.example.integrador.Services.ServicioClientes;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +24,20 @@ public class ClientesControlador {
     
     @Autowired
     ServicioClientes servicioCliente;
+    
+   
+    @GetMapping("/excelx")
+    public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
+        ByteArrayInputStream flujo = servicioCliente.generarExcel();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=Clientes.xls");
+        return ResponseEntity.ok().
+                headers(headers).
+                body(new InputStreamResource(flujo));
+    }
+    
+    
     
     @GetMapping("/clientelista")
     public String Clienteslista(Model model) {
@@ -68,6 +87,7 @@ public class ClientesControlador {
         servicioCliente.delete(id);
         return "redirect:/clientelista";
     }
+    
     
     
     

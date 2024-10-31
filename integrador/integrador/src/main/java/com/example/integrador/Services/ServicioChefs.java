@@ -1,8 +1,8 @@
+
 package com.example.integrador.Services;
 
-import com.example.integrador.Entidades_Model.Clientes;
-import com.example.integrador.Repositorio.ClientesDAO;
-
+import com.example.integrador.Entidades_Model.Chefs;
+import com.example.integrador.Repositorio.ChefsDAO;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -15,57 +15,56 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ServicioClientes {
-
+public class ServicioChefs {
     @Autowired
-    private ClientesDAO clientesDAO;
-
+    private ChefsDAO chefsdao;
+    
     //Select
     @Transactional(readOnly = true)
-    public List<Clientes> getList() {
-        return clientesDAO.findAll();
+    public List<Chefs> getList() {
+        return chefsdao.findAll();
     }
 
     //INSERT Y UPDATE
     @Transactional
-    public Clientes save(Clientes clientes) {
-        return clientesDAO.save(clientes);
+    public Chefs save(Chefs chefs) {
+        return chefsdao.save(chefs);
     }
 
     //SELECT
     @Transactional(readOnly = true)
-    public Clientes get(Long id) {
-        return clientesDAO.findById(id).orElse(null);
+    public Chefs get(Long id) {
+        return chefsdao.findById(id).orElse(null);
     }
 
     //DELETE
     @Transactional
     public void delete(Long id) {
-        clientesDAO.deleteById(id);
+        chefsdao.deleteById(id);
     }
-
+    
     public ByteArrayInputStream generarExcel() throws IOException {
-        List<Clientes> clientes = clientesDAO.findAll();
+        List<Chefs> chefs = chefsdao.findAll();
         HSSFWorkbook workbook = new HSSFWorkbook();
-        HSSFSheet sheet = workbook.createSheet("Cliente Info");
+        HSSFSheet sheet = workbook.createSheet("Chefs Info");
         HSSFRow row = sheet.createRow(0);
 
-        row.createCell(0).setCellValue("cliente_id");
+        row.createCell(0).setCellValue("chefid");
         row.createCell(1).setCellValue("nombre");
         row.createCell(2).setCellValue("apellido");
-        row.createCell(3).setCellValue("Correo_Electronico");
+        row.createCell(3).setCellValue("especialidad");
         row.createCell(4).setCellValue("telefono");
-        row.createCell(5).setCellValue("direccion");
+        row.createCell(5).setCellValue("CorreoElectronico");
 
         int dataRowIndex = 1;
-        for (Clientes cliente : clientes) {
+        for (Chefs chef : chefs) {
             HSSFRow dataRow = sheet.createRow(dataRowIndex);
-            dataRow.createCell(0).setCellValue(cliente.getCliente_id());
-            dataRow.createCell(1).setCellValue(cliente.getNombre());
-            dataRow.createCell(2).setCellValue(cliente.getApellido());
-            dataRow.createCell(3).setCellValue(cliente.getCorreo_Electronico());
-            dataRow.createCell(4).setCellValue(cliente.getTelefono());
-            dataRow.createCell(5).setCellValue(cliente.getDireccion());
+            dataRow.createCell(0).setCellValue(chef.getChefid());
+            dataRow.createCell(1).setCellValue(chef.getNombre());
+            dataRow.createCell(2).setCellValue(chef.getApellido());
+            dataRow.createCell(3).setCellValue(chef.getEspecialidad());
+            dataRow.createCell(4).setCellValue(chef.getTelefono());
+            dataRow.createCell(5).setCellValue(chef.getCorreo_electronico());
             dataRowIndex ++;
         }
         ByteArrayOutputStream ops= new ByteArrayOutputStream();
@@ -74,4 +73,15 @@ public class ServicioClientes {
         ops.close();
         return new ByteArrayInputStream(ops.toByteArray());
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
