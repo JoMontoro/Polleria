@@ -1,4 +1,3 @@
-
 package com.example.integrador.Controladores;
 
 import org.springframework.stereotype.Controller;
@@ -7,69 +6,49 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class Controlador {
-    
+
     @GetMapping("/")
-    public String index() {
+    public String mostrarIndex() {  // Cambiado nombre del método a mostrarIndex
         return "index";
     }
- @GetMapping("/index")
-    public String index(Model model) {
+
+    @GetMapping("/index")
+    public String mostrarIndexConModelo(Model model) {  // Cambiado nombre del método a mostrarIndexConModelo
         return "index";
     }
+
     @GetMapping("/listageneral")
     public String listageneral(Model model) {
         return "listageneral";
     }
-     @GetMapping({"/contacto"})//tiene
+
+    @GetMapping("/contacto")
     public String contacto(Model model) {
         return "contacto";
     }
-//     @GetMapping("/menu")//tiene
-//    public String carta(Model model) {
-//        return "menu";
-//    }
 
-    
-     @GetMapping("/ladmin")
+    @GetMapping("/ladmin")
     public String login(Model model) {
         return "ladmin";
     }
-    @GetMapping("/comentario")//tiene
+
+    @GetMapping("/comentario")
     public String sugerencias(Model model) {
         return "comentario";
     }
-    @GetMapping("/reclamaciones")//tiene
+
+    @GetMapping("/reclamaciones")
     public String reclamaciones(Model model) {
         return "reclamaciones";
     }
-    @GetMapping("/fromcompra")//tiene
+
+    @GetMapping("/fromcompra")
     public String fromclient(Model model) {
         return "fromcompra";
     }
-    
-    /*@RequestMapping("/dataclientfrom")
-    public String dataclientfrom(@RequestParam("nombre") String nombre,
-            @RequestParam("apellidos") String apellidos,
-            @RequestParam("correo") String correo,
-            @RequestParam("numero") String numero,
-            @RequestParam("direccion") String direccion,
-            Model model
-    ) {
-        model.addAttribute("nombre", nombre);
-        model.addAttribute("apellidos", apellidos);
-        model.addAttribute("correo", correo);
-        model.addAttribute("numero", numero);
-        model.addAttribute("direccion", direccion);
-        return "clienteform";
-    }*/
-    
+
     @GetMapping("/carrito")
     public String especificaciones(Model model) {
         return "carrito";
     }
-    
-//    @GetMapping("/nuevoProducto")
-//    public String mostrarFormularioNuevoProducto(Model model) {
-//        return "nuevoProducto"; // El nombre del archivo HTML que muestra el formulario
-//    }
 }
