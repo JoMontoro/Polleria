@@ -28,4 +28,7 @@ public class Productos {
     private Long proveedor_id;
     private Long almacen_id;
     private String imagen_url;
+    private String categoria;
+
+
 }
