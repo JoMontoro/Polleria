@@ -61,4 +61,8 @@ public class Controlador {
     public String especificaciones(Model model) {
         return "carrito";
     }
+    @GetMapping("/nosotros")
+    public String nosotros(Model model) {
+        return "nosotros";
+    }
 }
