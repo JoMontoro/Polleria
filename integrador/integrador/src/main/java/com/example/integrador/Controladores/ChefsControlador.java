@@ -25,15 +25,16 @@ public class ChefsControlador {
     ServicioChefs serviciochefs;
     
     @GetMapping("/excelc")
-    public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
-        ByteArrayInputStream flujo = serviciochefs.generarExcel();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=Chef.xls");
-        return ResponseEntity.ok().
-                headers(headers).
-                body(new InputStreamResource(flujo));
-    }
+public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
+    ByteArrayInputStream flujo = serviciochefs.generarExcel();
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Chef.xls");
+    headers.add(HttpHeaders.CONTENT_TYPE, "application/vnd.ms-excel"); // Tipo de contenido para Excel
+
+    return ResponseEntity.ok()
+            .headers(headers)
+            .body(new InputStreamResource(flujo));
+}
     
     @GetMapping("/cheflista")
     public String Chefslista(Model model) {

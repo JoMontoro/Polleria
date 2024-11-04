@@ -70,7 +70,7 @@ public class ServicioEmpleados {
             dataRow.createCell(3).setCellValue(empleado.getDni());
             dataRow.createCell(4).setCellValue(empleado.getCargo());
             dataRow.createCell(5).setCellValue(empleado.getTelefono());
-             dataRow.createCell(5).setCellValue(empleado.getCorreo_electronico());
+             dataRow.createCell(6).setCellValue(empleado.getCorreo_electronico());
             dataRowIndex ++;
         }
         ByteArrayOutputStream ops= new ByteArrayOutputStream();
