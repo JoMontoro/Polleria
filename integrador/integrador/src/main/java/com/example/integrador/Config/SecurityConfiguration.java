@@ -46,6 +46,7 @@ public class SecurityConfiguration {
                     "/listageneral/**",
                     "/clientelista/**",
                     "/empleadoslista/**",
+                    "/nuevoProducto/**",
                     "/cheflista/**",
                     "/formclientes/**",
                     "/formempleados/**",
