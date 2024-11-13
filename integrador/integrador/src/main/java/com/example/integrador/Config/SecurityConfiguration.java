@@ -1,9 +1,11 @@
 package com.example.integrador.Config;
 
 import com.example.integrador.Services.UsuarioServicio;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,9 +16,20 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
     @Bean
     public static BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(usuarioServicio);
+        auth.setPasswordEncoder(passwordEncoder());
+        return auth;
     }
 
     @Bean
@@ -39,7 +52,8 @@ public class SecurityConfiguration {
                     "/carta",
                     "/carrito",
                     "/login",
-                    "/registro"
+                    "/registro/**", // Agregado /** para cubrir todas las subrutas de registro
+                    "/registro-exitoso" // Nueva ruta para mensaje de éxito
                 ).permitAll()
                 // Rutas protegidas que requieren autenticación
                 .requestMatchers(
@@ -61,7 +75,8 @@ public class SecurityConfiguration {
                     "/deletechefs/**",
                     "/excelx/**",
                     "/excele/**",
-                    "/excelc/**"
+                    "/excelc/**",
+                    "/admin/**" // Agregado para rutas de administrador
                 ).authenticated()
                 .anyRequest().permitAll()
             )
@@ -78,7 +93,8 @@ public class SecurityConfiguration {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .permitAll()
-            );
+            )
+            .authenticationProvider(authenticationProvider()); // Agregado el provider
 
         return http.build();
     }

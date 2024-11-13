@@ -20,99 +20,163 @@ import lombok.AllArgsConstructor;
 @Table(name = "usuarios", uniqueConstraints = @UniqueConstraint(columnNames = "email"))
 public class Usuario {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(name = "nombre")
-	private String nombre;
+    @Column(name = "nombre")
+    private String nombre;
 
-	@Column(name = "apellido")
-	private String apellido;
+    @Column(name = "apellido")
+    private String apellido;
 
-	private String email;
-	private String password;
-	
-	@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-	@JoinTable(
-			name = "usuarios_roles",
-			joinColumns = @JoinColumn(name = "usuario_id",referencedColumnName = "id"),
-			inverseJoinColumns = @JoinColumn(name = "rol_id",referencedColumnName = "id")
-			)
-	private Collection<Rol> roles;
+    @Column(unique = true)
+    private String email;
+    
+    private String password;
+    
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "usuarios_roles",
+            joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "rol_id", referencedColumnName = "id")
+    )
+    private Collection<Rol> roles;
 
-	public Usuario(String nombre, String apellido, String email) {
-	}
+    // Nuevos campos de Spring Security
+    @Column(name = "account_non_expired")
+    private boolean accountNonExpired = true;
 
-	public Long getId() {
-		return id;
-	}
+    @Column(name = "account_non_locked")
+    private boolean accountNonLocked = true;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Column(name = "credentials_non_expired")
+    private boolean credentialsNonExpired = true;
 
-	public String getNombre() {
-		return nombre;
-	}
+    @Column(name = "enabled")
+    private boolean enabled = true;
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    // Constructor vacío
+    public Usuario() {
+    }
 
-	public String getApellido() {
-		return apellido;
-	}
+    // Constructor básico
+    public Usuario(String nombre, String apellido, String email) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.accountNonExpired = true;
+        this.accountNonLocked = true;
+        this.credentialsNonExpired = true;
+        this.enabled = true;
+    }
 
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
+    // Constructor completo con id
+    public Usuario(Long id, String nombre, String apellido, String email, String password, Collection<Rol> roles) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+        this.accountNonExpired = true;
+        this.accountNonLocked = true;
+        this.credentialsNonExpired = true;
+        this.enabled = true;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    // Constructor sin id
+    public Usuario(String nombre, String apellido, String email, String password, Collection<Rol> roles) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+        this.accountNonExpired = true;
+        this.accountNonLocked = true;
+        this.credentialsNonExpired = true;
+        this.enabled = true;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    // Getters y setters originales
+    public Long getId() {
+        return id;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public Collection<Rol> getRoles() {
-		return roles;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setRoles(Collection<Rol> roles) {
-		this.roles = roles;
-	}
+    public String getApellido() {
+        return apellido;
+    }
 
-	public Usuario(Long id, String nombre, String apellido, String email, String password, Collection<Rol> roles) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.password = password;
-		this.roles = roles;
-	}
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
 
-	public Usuario(String nombre, String apellido, String email, String password, Collection<Rol> roles) {
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.password = password;
-		this.roles = roles;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public Usuario() {
-		
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Collection<Rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Collection<Rol> roles) {
+        this.roles = roles;
+    }
+
+    // Nuevos getters y setters para los campos de Spring Security
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public boolean isAccountNonLocked() {
+        return accountNonLocked;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
 }

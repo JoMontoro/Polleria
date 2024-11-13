@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,9 +35,10 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Usuario usuario = new Usuario(
                 registroDTO.getNombre(),
                 registroDTO.getApellido(),
-                registroDTO.getEmail()
+                registroDTO.getEmail(),
+                passwordEncoder.encode(registroDTO.getPassword()),
+                Arrays.asList(new Rol("ROLE_USER"))
         );
-        usuario.setPassword(passwordEncoder.encode(registroDTO.getPassword()));
         return usuarioRepositorio.save(usuario);
     }
 
