@@ -63,6 +63,7 @@ public class SecurityConfiguration {
                     "/cheflista/**",
                     "/formclientes/**",
                     "/formempleados/**",
+                    "/nuevoProducto/**",
                     "/formchef/**",
                     "/registrarclientes/**",
                     "/registrarempleados/**",

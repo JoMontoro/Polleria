@@ -4,6 +4,7 @@ import com.example.integrador.Entidades_Model.Rol;
 import com.example.integrador.Entidades_Model.Usuario;
 import com.example.integrador.Repositorio.UsuarioRepositorio;
 import com.example.integrador.controlador.dto.UsuarioRegistroDTO;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
