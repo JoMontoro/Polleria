@@ -4,6 +4,7 @@ import com.example.integrador.Entidades_Model.Rol;
 import com.example.integrador.Entidades_Model.Usuario;
 import com.example.integrador.Repositorio.UsuarioRepositorio;
 import com.example.integrador.controlador.dto.UsuarioRegistroDTO;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -34,9 +35,10 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Usuario usuario = new Usuario(
                 registroDTO.getNombre(),
                 registroDTO.getApellido(),
-                registroDTO.getEmail()
+                registroDTO.getEmail(),
+                passwordEncoder.encode(registroDTO.getPassword()),
+                Arrays.asList(new Rol("ROLE_USER"))
         );
-        usuario.setPassword(passwordEncoder.encode(registroDTO.getPassword()));
         return usuarioRepositorio.save(usuario);
     }
 
