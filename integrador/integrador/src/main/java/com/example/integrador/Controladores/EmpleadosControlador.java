@@ -23,34 +23,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class EmpleadosControlador {
+
     @Autowired
     ServicioEmpleados servicioempleados;
-   
+
     @GetMapping("/excele")
-  public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
+    public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
         ByteArrayInputStream flujo = servicioempleados.generarExcel();
         HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=Empleado.xls");
-        return ResponseEntity.ok().
-                headers(headers).
-                body(new InputStreamResource(flujo));
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Empleado.xls");
+        headers.add(HttpHeaders.CONTENT_TYPE, "application/vnd.ms-excel");
+
+        return ResponseEntity.ok()
+                .headers(headers)
+                .body(new InputStreamResource(flujo));
     }
-    
+
     @GetMapping("/empleadoslista")
     public String Empleadoslista(Model model) {
         List<Empleados> lista = servicioempleados.getList();
         model.addAttribute("lista", lista);
-        
+
         return "empleadoslista";
     }
-    
+
     @GetMapping("/formempleados")
     public String formEmpleados(Model model) {
         model.addAttribute("empleados", new Empleados());
         return "formempleados";
     }
-    
+
     @PostMapping("/registrarempleados")
     public String registrarEmpleados(@ModelAttribute Empleados empleados, Model model) {
         try {
@@ -62,27 +64,20 @@ public class EmpleadosControlador {
             return "formempleados";
         }
     }
-    
-    
+
     @GetMapping("/getEditempleados/{empleado_id}")
-    public String editarFormEmpleados(Model model, 
+    public String editarFormEmpleados(Model model,
             @PathVariable("empleado_id") Long id) {
         Empleados empleados = servicioempleados.get(id);
         model.addAttribute("empleados", empleados);
         return "formempleados";
     }
-    
-    
+
     @GetMapping("/deleteempleados/{empleado_id}")
-    public String eliminarFormEmpleados(Model model, 
+    public String eliminarFormEmpleados(Model model,
             @PathVariable("empleado_id") Long id) {
         servicioempleados.delete(id);
         return "redirect:/empleadoslista";
     }
-    
-    
-    
-    
-    
-    
+
 }
