@@ -1,123 +1,118 @@
-/* Importa tus archivos CSS */
-@import "navbar-footer.css";
-
+/* Importa tus archivos CSS */ 
+@import "navbar-footer.css"; 
+/* Importa los estilos adicionales del archivo "navbar-footer.css". */
 
 /* General */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos. */
+    padding: 0; /* Elimina el relleno predeterminado de todos los elementos. */
+    box-sizing: border-box; /* Incluye bordes y padding en el cálculo del ancho y alto del elemento. */
 }
 
 body {
-    font-family: "Montserrat", sans-serif;
-    line-height: 1.5;
-    background-image: url("../img/fondo-red.png");
+    font-family: "Montserrat", sans-serif; /* Aplica la fuente "Montserrat" al texto del cuerpo. */
+    line-height: 1.5; /* Define la altura de las líneas para mejorar la legibilidad. */
+    background-image: url("../img/fondo-red.png"); /* Establece una imagen de fondo para la página. */
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Montagu Slab", serif;
-    font-weight: bold;
+    font-family: "Montagu Slab", serif; /* Cambia la fuente de los títulos a "Montagu Slab". */
+    font-weight: bold; /* Hace que los títulos sean negritas. */
 }
 
 img {
-    max-width: 200%;
-    height: auto;
+    max-width: 200%; /* Permite que las imágenes se escalen hasta el doble de su tamaño original. */
+    height: auto; /* Mantiene la proporción de las imágenes al escalarlas. */
 }
 
 /* Fondo de la sección principal */
 .promo-section {
-    background-image: url("../img/fondo_negro.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    text-align: center;
-    padding: 3rem 0;
+    background-image: url("../img/fondo_negro.png"); /* Aplica una imagen de fondo a la sección promocional. */
+    background-size: cover; /* Asegura que la imagen de fondo cubra toda la sección. */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita. */
+    text-align: center; /* Centra horizontalmente el texto dentro de esta sección. */
+    padding: 3rem 0; /* Agrega espacio interno arriba y abajo de 3rem. */
 }
-
 
 .promo-title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5);
-    font-family: "Montagu Slab";
-    margin-left:90px;
+    font-size: 2.5rem; /* Tamaño grande para el título promocional. */
+    font-weight: 900; /* Hace que el texto sea muy grueso. */
+    text-shadow: 4px 4px 2px rgba(0, 0, 0, 0.5); /* Aplica una sombra al texto para darle profundidad. */
+    font-family: "Montagu Slab"; /* Usa la fuente "Montagu Slab" para el título. */
+    margin-left: 90px; /* Agrega un margen izquierdo de 90px. */
 }
-
-
 
 /* Sección de productos */
 .container {
-    padding: 2rem 0;
-
-
+    padding: 2rem 0; /* Agrega espacio interno arriba y abajo dentro del contenedor. */
 }
 
 h3 {
-    font-size: 1.75rem;
-    font-weight: bold;
+    font-size: 1.75rem; /* Tamaño de fuente para los subtítulos. */
+    font-weight: bold; /* Los subtítulos serán en negrita. */
 }
 
 .card {
-    border: none;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    transition: transform 0.3s;
+    border: none; /* Elimina cualquier borde predeterminado en las tarjetas. */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra ligera para resaltar las tarjetas. */
+    border-radius: 10px; /* Redondea las esquinas de las tarjetas. */
+    transition: transform 0.3s; /* Agrega una animación suave al pasar el mouse. */
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Agranda la tarjeta ligeramente cuando se pasa el mouse por encima. */
 }
 
 .card-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #333;
+    font-size: 1.25rem; /* Tamaño de fuente para el título dentro de las tarjetas. */
+    font-weight: bold; /* Hace que el título sea negrita. */
+    color: #333; /* Define un color gris oscuro para el texto del título. */
 }
 
 /* Imágenes de los productos */
 .card img {
-    border-radius: 10px 10px 0 0;
-    object-fit: cover;
-    height: 200px;
+    border-radius: 10px 10px 0 0; /* Redondea solo las esquinas superiores de las imágenes. */
+    object-fit: cover; /* Asegura que la imagen mantenga proporción al ajustarse al contenedor. */
+    height: 200px; /* Define una altura fija para las imágenes. */
 }
 
 /* Sección de contacto */
 #container-contacto {
-    background-image: url("../img/fondo-contacto.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    padding: 8.625rem 1.25rem;
-    width: 100%;
+    background-image: url("../img/fondo-contacto.jpg"); /* Aplica una imagen de fondo a la sección de contacto. */
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita. */
+    background-size: cover; /* Hace que la imagen de fondo cubra toda la sección. */
+    padding: 8.625rem 1.25rem; /* Agrega un relleno grande arriba y alrededor de la sección. */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho disponible. */
 }
 
 #form-contacto {
-    background-color: rgba(10, 10, 10, 0.8);
-    border-radius: 25px;
-    padding: 2rem;
+    background-color: rgba(10, 10, 10, 0.8); /* Aplica un fondo oscuro con opacidad al formulario. */
+    border-radius: 25px; /* Redondea las esquinas del formulario. */
+    padding: 2rem; /* Agrega espacio interno dentro del formulario. */
 }
 
 #titulo-contacto {
-    color: white;
-    font-family: "Montserrat";
-    font-size: 2rem;
-    font-weight: 900;
+    color: white; /* Cambia el color del texto a blanco. */
+    font-family: "Montserrat"; /* Usa la fuente "Montserrat" para el título. */
+    font-size: 2rem; /* Define un tamaño grande para el texto. */
+    font-weight: 900; /* Hace que el texto sea muy grueso. */
 }
 
 #subtitulo-contacto {
-    color: white;
-    font-family: "Montserrat";
-    font-size: 1rem;
-    font-weight: 100;
+    color: white; /* Cambia el color del texto a blanco. */
+    font-family: "Montserrat"; /* Usa la fuente "Montserrat" para el subtítulo. */
+    font-size: 1rem; /* Define un tamaño pequeño para el subtítulo. */
+    font-weight: 100; /* Hace que el texto sea delgado. */
 }
 
 #input-contacto input {
-    background-color: rgba(255, 255, 255, 0.8);
-    color: rgba(0, 0, 0, 0.8);
-    font-family: "Montserrat";
-    font-size: 1.125rem;
-    font-weight: 400;
-    border-radius: 0.375rem;
-    width: 100%;
-    margin-bottom: 1rem;
-    padding: 0.75rem;
+    background-color: rgba(255, 255, 255, 0.8); /* Establece un fondo blanco con opacidad para los campos de entrada. */
+    color: rgba(0, 0, 0, 0.8); /* Define el color del texto en negro con opacidad. */
+    font-family: "Montserrat"; /* Usa la fuente "Montserrat" para los campos de entrada. */
+    font-size: 1.125rem; /* Define un tamaño mediano para el texto en los campos. */
+    font-weight: 400; /* Hace que el texto sea de peso regular. */
+    border-radius: 0.375rem; /* Redondea las esquinas de los campos de entrada. */
+    width: 100%; /* Asegura que los campos ocupen todo el ancho disponible. */
+    margin-bottom: 1rem; /* Agrega espacio entre los campos de entrada. */
+    padding: 0.75rem; /* Agrega espacio interno dentro de los campos de entrada. */
 }
