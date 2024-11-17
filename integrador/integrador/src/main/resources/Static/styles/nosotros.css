@@ -61,7 +61,7 @@
 .box-Vision {
     position: absolute;
     top: 350px;
-    right: 900px;
+    right: 750px;
     background-color: #ffffff;
     padding: 5px 15px;
     font-size: 20px;
@@ -74,13 +74,13 @@
 .image-section {
     width: 32%;
     position: absolute;
-    top: -250px;
+    top: -252px;
     right: -5px;
     padding-top: 80px;/* Mismo padding que el container para alinearlo con el header */
 }
 
 .image-section img {
     width: 600px;
-    height: 900px;
+    height: 730px;
     object-fit: cover;
 }
