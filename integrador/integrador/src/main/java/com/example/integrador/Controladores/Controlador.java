@@ -1,10 +1,15 @@
 package com.example.integrador.Controladores;
 
+import com.example.integrador.Services.EstadisticaService;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 
 @Controller
 public class Controlador {
@@ -24,11 +29,18 @@ public class Controlador {
         return "index";
     }
 
+ @Autowired
+    private EstadisticaService estadisticaService;
+    
     @GetMapping("/listageneral")
     public String listageneral(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String nombreUsuario = auth.getName();
         model.addAttribute("nombreUsuario", nombreUsuario);
+        
+        Map<String, Object> estadisticas = estadisticaService.obtenerEstadisticasAnuales();
+        model.addAttribute("estadisticas", estadisticas);
+        
         return "listageneral";
     }
 
