@@ -74,7 +74,7 @@
 .image-section {
     width: 32%;
     position: absolute;
-    top: -252px;
+    top: -256px;
     right: -5px;
     padding-top: 80px;/* Mismo padding que el container para alinearlo con el header */
 }
