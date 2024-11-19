@@ -13,3 +13,4 @@ import java.util.List;
 public interface PromocionRepository extends JpaRepository<Promocion, Long> {
     List<Promocion> findByFechaInicioBeforeAndFechaFinAfter(LocalDate now1, LocalDate now2);
 }
+
