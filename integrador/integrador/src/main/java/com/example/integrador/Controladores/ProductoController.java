@@ -54,4 +54,18 @@ public class ProductoController {
         // Aquí irá la lógica para obtener un producto específico
         return "detalleProducto";
     }
+
+    // Endpoint para obtener productos por categoría
+    @GetMapping("/productos")
+    @ResponseBody
+    public List<Productos> obtenerProductosPorCategoria(@RequestParam(required = false) String categoria) {
+        if (categoria == null || categoria.isEmpty()) {
+            // Si no se selecciona ninguna categoría, devuelve todos los productos
+            return productoService.obtenerTodosLosProductos();
+        } else {
+            // Devuelve productos filtrados por la categoría seleccionada
+            return productoService.obtenerProductosPorCategoria(categoria);
+        }
+    }
+
 }

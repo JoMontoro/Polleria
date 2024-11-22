@@ -25,8 +25,7 @@ public class detalle_pedidos {
     private Long id_detallepedido;
     
     private Long id_pedido;
-    private Long id_productos;
-    private Long cantidad;
+    private Long id_productos;    private Long cantidad;
     private Long precio_unitario;
     
 }

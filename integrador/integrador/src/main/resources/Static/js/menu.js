@@ -55,25 +55,7 @@ function actualizarContadorCarrito() {
     }
 }
 
-// Función para filtrar productos por categoría
+// Inicializar el contador del carrito al cargar la página
 document.addEventListener('DOMContentLoaded', function() {
-    const categoriaFilter = document.getElementById('categoriaFilter');
-    if (categoriaFilter) {
-        categoriaFilter.addEventListener('change', function() {
-            const categoriaSeleccionada = this.value;
-            const productos = document.querySelectorAll('.producto-card');
-
-            productos.forEach(producto => {
-                const categoriaProducto = producto.getAttribute('data-categoria');
-                if (!categoriaSeleccionada || categoriaProducto === categoriaSeleccionada) {
-                    producto.style.display = 'flex';
-                } else {
-                    producto.style.display = 'none';
-                }
-            });
-        });
-    }
-
-    // Inicializar el contador del carrito
     actualizarContadorCarrito();
 });

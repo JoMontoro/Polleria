@@ -52,4 +52,10 @@ public class ProductoService {
     public List<Productos> obtenerTodosLosProductos() {
         return productosDAO.findAll();
     }
+
+    // Obtener productos por categoría
+    public List<Productos> obtenerProductosPorCategoria(String categoria) {
+        return productosDAO.findByCategoria(categoria);
+    }
+
 }
