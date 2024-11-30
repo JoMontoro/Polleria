@@ -1,13 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.integrador.Controladores;
 
+import com.example.integrador.Entidades_Model.Promocion;
 import com.example.integrador.Services.PromocionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.List;
 
 @Controller
 public class PromocionController {
@@ -20,7 +19,8 @@ public class PromocionController {
 
     @GetMapping("/promociones")
     public String mostrarPromociones(Model model) {
-        model.addAttribute("promociones", promocionService.getPromocionesActivas());
-        return "promociones"; // Renderiza la plantilla promociones.html
+        List<Promocion> promociones = promocionService.obtenerPromocionesActivas();
+        model.addAttribute("promociones", promociones);
+        return "promociones";
     }
 }
