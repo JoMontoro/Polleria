@@ -1,4 +1,4 @@
-<img width="110" height="100" align="left" alt="Prueba" src=".assets/Logo_gian.png">
+<img width="110" height="100" align="left" alt="Prueba" src="assets/Logo_gian.png">
 
 <br>
 
@@ -67,7 +67,7 @@ Asegúrate de contar con lo siguiente antes de implementar la solución:
 - **MySQL Workbench**: Sistema de gestión de bases de datos para almacenar la información de 
 ---
 ## 🎨 Diseño Frontend
-![Diseño de la Interfaz](.assets/Home_Gian.png)
+![Diseño de la Interfaz](assets/Home_Gian.png)
 
 ---
 ## 🤝 Contribuciones
