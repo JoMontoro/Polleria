@@ -73,8 +73,8 @@ Si deseas colaborar con el proyecto, envía tus sugerencias o mejoras en nuestro
 ### 👥 Autores
 **Equipo de Desarrollo**
 
-- **👤 Nayeli Yamile Ipanaque Aquino:** [nayeli@gmail.com] (mailto:email@ejemplo.com)
-- **👤 Josue Quispe Franco:** [josueqf@gmail.com] (mailto:email@ejemplo.com)
-- **👤 Sebastian Alejandro Berna Díaz:** [sebastianbd@gmail.com] (mailto:email@ejemplo.com)
-- **👤 Omar Antony Zamora Yepez:** [omaramy@gmail.com] (mailto:email@ejemplo.com)
-- **👤 Jose Antonio Montoro Garcia:** [josemga@gmail.com] (mailto:email@ejemplo.com)
+- **👤 Nayeli Yamile Ipanaque Aquino:** nayeli@gmail.com
+- **👤 Josue Quispe Franco:** josueqf@gmail.com
+- **👤 Sebastian Alejandro Berna Díaz:** sebastianbd@gmail.com
+- **👤 Omar Antony Zamora Yepez:** omaramy@gmail.com
+- **👤 Jose Antonio Montoro Garcia:** josemga@gmail.com
