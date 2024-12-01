@@ -1,0 +1,27 @@
+/* Centrar todo el contenido en la sección de la ubicación */
+.location-container {
+    text-align: center;
+    padding: 2rem;
+}
+
+/* Estilo para el cuadro dorado alrededor del mapa */
+.location-map {
+    background-color: #FFD700; /* Color dorado */
+    padding: 20px;
+    border-radius: 10px;
+    display: inline-block; /* Hace que el contenedor solo ocupe el espacio necesario */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Centrar el mapa dentro del contenedor */
+iframe {
+    margin: 0 auto;
+    max-width: 100%;
+    height: 400px;
+}
+
+/* Estilo para el texto */
+.location-text {
+    font-size: 1.25rem;
+    margin: 1rem 0;
+}
