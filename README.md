@@ -1,11 +1,14 @@
-<img width="110" height="100" align="left" alt="Prueba" src=".assets/logo.png"> <br>
+
 Giancarlo's Web App
-📝 Presentación de la Empresa
+
+##📝 Presentación de la Empresa
 Pollos a la Brasa Giancarlo EIRL es una empresa peruana reconocida por ofrecer pollos a la brasa de calidad excepcional, un plato emblemático de la gastronomía peruana. Fundada en 2014, la empresa ha destacado por su enfoque en la calidad y el servicio al cliente. Sin embargo, enfrenta el desafío de modernizar sus operaciones para mantenerse competitiva en un entorno cada vez más digital.
 
-🚩 Problemática
-Actualmente, Giancarlo's opera con sistemas manuales para la gestión de pedidos, inventario y ventas, lo que incrementa los errores operativos y afecta la experiencia del cliente. Además, su alcance digital es limitado a redes sociales, lo que reduce su capacidad para captar nuevos clientes.
+---
 
+##🚩 Problemática
+Actualmente, Giancarlo's opera con sistemas manuales para la gestión de pedidos, inventario y ventas, lo que incrementa los errores operativos y afecta la experiencia del cliente. Además, su alcance digital es limitado a redes sociales, lo que reduce su capacidad para captar nuevos clientes.
+---
 🎯 Objetivo General
 Desarrollar una aplicación web para Giancarlo's que automatice sus operaciones, mejore la experiencia del cliente y fortalezca su presencia digital.
 
