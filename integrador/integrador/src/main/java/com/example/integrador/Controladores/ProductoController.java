@@ -54,4 +54,11 @@ public class ProductoController {
         // Aquí irá la lógica para obtener un producto específico
         return "detalleProducto";
     }
+    
+    @GetMapping("/detalleproducto")
+    public String detalleProducto(@RequestParam("id") Long id, Model model) {
+        Productos producto = productoService.obtenerProductoPorId(id);
+        model.addAttribute("producto", producto);
+    return "detalleProducto";
+    }
 }
