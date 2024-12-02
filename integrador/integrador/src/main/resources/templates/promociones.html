@@ -25,92 +25,92 @@
 </head>
 <body>
     <!--Header-->
-<div class="container-fluid d-flex justify-content-center align-items-center flex-column p-0" id="container-principal">
-    <div th:replace="fragments/header :: header"></div>
-</div>
+    <div class="container-fluid d-flex justify-content-center align-items-center flex-column p-0" id="container-principal">
+        <div th:replace="fragments/header :: header"></div>
+    </div>
     <!--Fin Header-->
-<h1>Nuestras Promociones</h1>
-<div class="carrusel-container">
-    <button class="btn btn-prev" id="btn-prev">&#8249;</button>
-    <div class="carrusel" id="carrusel">
-        <div th:each="promo : ${promociones}" class="carrusel-item">
-            <img th:src="@{/img/{img}(img=${promo.imagenUrl})}" th:alt="${promo.nombre}">
-            <h2 th:text="${promo.nombre}"></h2>
-            <p th:text="${promo.descripcion}"></p>
-            <span th:text="'S/ ' + ${promo.precio}"></span>
+    <h1>Nuestras Promociones</h1>
+    <div class="carrusel-container">
+        <button class="btn btn-prev" id="btn-prev">&#8249;</button>
+        <div class="carrusel" id="carrusel">
+            <div th:each="promo : ${promociones}" class="carrusel-item">
+                <img th:src="@{/img/{img}(img=${promo.imagenUrl})}" th:alt="${promo.nombre}">
+                <h2 th:text="${promo.nombre}"></h2>
+                <p th:text="${promo.descripcion}"></p>
+                <span th:text="'S/ ' + ${promo.precio}"></span>
+            </div>
+        </div>
+        <button class="btn btn-next" id="btn-next">&#8250;</button>
+    </div>
+    <div class="indicadores" id="indicadores">
+        <div th:each="promo, iter : ${promociones}" 
+             class="indicador" 
+             th:classappend="${iter.index == 0} ? 'active' : ''"
+             onclick="mostrarCarrusel([[${iter.index}]])">
         </div>
     </div>
-    <button class="btn btn-next" id="btn-next">&#8250;</button>
-</div>
-<div class="indicadores" id="indicadores">
-    <div th:each="promo, iter : ${promociones}" 
-         class="indicador" 
-         th:classappend="${iter.index == 0} ? 'active' : ''"
-         onclick="mostrarCarrusel([[${iter.index}]])">
-    </div>
-</div>
-<script>
-    let currentIndex = 0;
-    const carrusel = document.getElementById('carrusel');
-    const btnPrev = document.getElementById('btn-prev');
-    const btnNext = document.getElementById('btn-next');
-    let timer;
+    <script>
+        let currentIndex = 0;
+        const carrusel = document.getElementById('carrusel');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        let timer;
 
-    function moverCarrusel(direction) {
-        const items = document.querySelectorAll('.carrusel-item');
-        const totalItems = items.length;
-        currentIndex = (currentIndex + direction + totalItems) % totalItems;
-        const offset = -currentIndex * 100;
-        carrusel.style.transform = `translateX(${offset}%)`;
+        function moverCarrusel(direction) {
+            const items = document.querySelectorAll('.carrusel-item');
+            const totalItems = items.length;
+            currentIndex = (currentIndex + direction + totalItems) % totalItems;
+            const offset = -currentIndex * 100;
+            carrusel.style.transform = `translateX(${offset}%)`;
 
-        // Actualizar indicadores
-        actualizarIndicadores();
-    }
+            // Actualizar indicadores
+            actualizarIndicadores();
+        }
 
-    function mostrarCarrusel(index) {
-        const items = document.querySelectorAll('.carrusel-item');
-        currentIndex = index;
-        const offset = -currentIndex * 100;
-        carrusel.style.transform = `translateX(${offset}%)`;
+        function mostrarCarrusel(index) {
+            const items = document.querySelectorAll('.carrusel-item');
+            currentIndex = index;
+            const offset = -currentIndex * 100;
+            carrusel.style.transform = `translateX(${offset}%)`;
 
-        // Actualizar indicadores
-        actualizarIndicadores();
-    }
+            // Actualizar indicadores
+            actualizarIndicadores();
+        }
 
-    function actualizarIndicadores() {
-        const indicadores = document.querySelectorAll('.indicador');
-        indicadores.forEach((indicador, index) => {
-            indicador.classList.toggle('active', index === currentIndex);
+        function actualizarIndicadores() {
+            const indicadores = document.querySelectorAll('.indicador');
+            indicadores.forEach((indicador, index) => {
+                indicador.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function iniciarCarruselAutomatico() {
+            detenerCarrusel();
+            timer = setInterval(() => {
+                moverCarrusel(1); // Avanza una imagen hacia la derecha
+            }, 5000); // Cada 5 segundos
+        }
+
+        function detenerCarrusel() {
+            clearInterval(timer);
+        }
+
+        // Eventos para botones
+        btnPrev.addEventListener('click', () => {
+            moverCarrusel(-1);
+            iniciarCarruselAutomatico(); // Reiniciar automático
         });
-    }
 
-    function iniciarCarruselAutomatico() {
-        detenerCarrusel();
-        timer = setInterval(() => {
-            moverCarrusel(1); // Avanza una imagen hacia la derecha
-        }, 5000); // Cada 5 segundos
-    }
+        btnNext.addEventListener('click', () => {
+            moverCarrusel(1);
+            iniciarCarruselAutomatico(); // Reiniciar automático
+        });
 
-    function detenerCarrusel() {
-        clearInterval(timer);
-    }
-
-    // Eventos para botones
-    btnPrev.addEventListener('click', () => {
-        moverCarrusel(-1);
-        iniciarCarruselAutomatico(); // Reiniciar automático
-    });
-
-    btnNext.addEventListener('click', () => {
-        moverCarrusel(1);
-        iniciarCarruselAutomatico(); // Reiniciar automático
-    });
-
-    // Iniciar carrusel automático
-    iniciarCarruselAutomatico();
-</script>
-<!--Footer-->
-<div th:replace="fragments/footer :: footer"></div>
-<!--Fin Footer-->
+        // Iniciar carrusel automático
+        iniciarCarruselAutomatico();
+    </script>
+    <!--Footer-->
+    <div th:replace="fragments/footer :: footer"></div>
+    <!--Fin Footer-->
 </body>
 </html>
