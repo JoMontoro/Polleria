@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-
+    
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,9 +57,9 @@
              th:data-categoria="${producto.categoria}"
              class="col-12 col-md-6 col-xl-4 d-flex justify-content-center producto-card">
             <div class="card product-card" th:data-id="${producto.producto_id}">
-                <img th:src="@{/img/uploads/} + ${producto.imagen_url}"
-                     class="product-img"
-                     alt="Imagen del producto">
+                <a th:href="@{/detalleproducto(id=${producto.producto_id})}">
+                    <img th:src="@{/img/uploads/} + ${producto.imagen_url}" class="product-img" alt="Imagen del producto">
+                </a>
                 <div class="card-body text-center">
                     <h5 class="product-title" th:text="${producto.nombre_producto}">Nombre del Producto</h5>
                     <p class="product-description" th:text="${producto.descripcion}">Descripción del Producto</p>
@@ -72,6 +72,12 @@
         </div>
     </div>
 </div>
+<script>
+    function redirigirADetalle(productoId) {
+        // Redirigir al archivo detalleproducto.html con el producto_id
+        window.location.href = "/detalleproducto?id=" + productoId;
+    }
+</script>
 
 <!--Footer-->
 <div th:replace="fragments/footer :: footer"></div>
