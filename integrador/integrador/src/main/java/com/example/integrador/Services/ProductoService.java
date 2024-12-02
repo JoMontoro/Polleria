@@ -52,4 +52,8 @@ public class ProductoService {
     public List<Productos> obtenerTodosLosProductos() {
         return productosDAO.findAll();
     }
+    
+    public Productos obtenerProductoPorId(Long id) {
+        return productosDAO.findById(id).orElseThrow(() -> new IllegalArgumentException("Producto no encontrado con ID: " + id));
+    }
 }
