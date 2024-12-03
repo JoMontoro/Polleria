@@ -13,3 +13,4 @@ public interface ProductosDAO extends JpaRepository<Productos, Long> {
     List<Productos> findByCategoria(String categoria);
     
 }
+

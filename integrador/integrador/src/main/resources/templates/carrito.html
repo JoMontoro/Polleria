@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Tus estilos CSS -->
-    <link rel="stylesheet" th:href="@{/styles/index.css}">
+<!--    <link rel="stylesheet" th:href="@{/styles/index.css}">-->
     <link rel="stylesheet" th:href="@{/styles/menu.css}">
     <link rel="stylesheet" th:href="@{/styles/navbar-footer.css}">
 </head>
@@ -88,7 +88,7 @@
                                    value="efectivo" id="efectivo" checked>
                             <label class="form-check-label" for="efectivo">
                                 Efectivo
-                                <img src="/img/efectivo-icon.png" alt="Efectivo" class="payment-icon">
+                                <img src="/img/Efectivo.png" alt="Efectivo" class="payment-icon">
                             </label>
                         </div>
                         <div class="form-check mb-2">
@@ -96,7 +96,7 @@
                                    value="yape" id="yape">
                             <label class="form-check-label" for="yape">
                                 Yape/Plin
-                                <img src="/img/yape-icon.png" alt="Yape" class="payment-icon">
+                                <img src="/img/yape.png" alt="Yape" class="payment-icon">
                             </label>
                         </div>
                         <div class="form-check mb-2">
@@ -104,7 +104,7 @@
                                    value="online" id="online">
                             <label class="form-check-label" for="online">
                                 Pago en línea (Tarjeta)
-                                <img src="/img/card-icon.png" alt="Tarjeta" class="payment-icon">
+                                <img src="/img/tarjeta.png" alt="Tarjeta" class="payment-icon">
                             </label>
                         </div>
                     </div>
@@ -114,13 +114,13 @@
                         <h2 class="card-title">Datos Personales</h2>
                         <div class="mb-3">
                             <input type="text" class="form-control mb-2" id="nombre"
-                                   placeholder="Nombre">
+                                   placeholder="Nombre" required>
                             <input type="text" class="form-control mb-2" id="apellido"
-                                   placeholder="Apellido">
+                                   placeholder="Apellido" required>
                             <input type="email" class="form-control mb-2" id="email"
-                                   placeholder="Correo electrónico">
+                                   placeholder="Correo electrónico" required>
                             <input type="tel" class="form-control mb-2" id="telefono"
-                                   placeholder="Teléfono">
+                                   placeholder="Teléfono" required>
                         </div>
                     </div>
 
@@ -128,16 +128,18 @@
                     <div id="datosTarjeta" style="display: none;">
                         <h2 class="card-title">Datos de la Tarjeta</h2>
                         <div class="mb-3">
-                            <input type="text" class="form-control mb-2" id="numeroTarjeta"
-                                   placeholder="Número de tarjeta">
+                            <input type="text" class="form-control mb-2" id="numeroTarjeta" placeholder="Número de tarjeta" required>
+                            <img id="tarjetaIcono" src="" alt="Tipo de tarjeta" style="width: 40px; display: none;">
+
+
                             <div class="row">
                                 <div class="col-6">
                                     <input type="text" class="form-control mb-2" id="fechaVencimiento"
-                                           placeholder="MM/AA">
+                                           placeholder="MM/AA" required>
                                 </div>
                                 <div class="col-6">
                                     <input type="text" class="form-control mb-2" id="cvv"
-                                           placeholder="CVV">
+                                           placeholder="CVV" required>
                                 </div>
                             </div>
                             <input type="text" class="form-control mb-2" id="nombreTarjeta"
@@ -158,7 +160,7 @@
     </div>
 </div>
 
-
+<br>
 <!--Footer-->
 <div th:replace="fragments/footer :: footer"></div>
 <!--Fin Footer-->
@@ -166,5 +168,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script th:src="@{/js/carrito.js}"></script>
+<script th:src="@{/js/validaciones.js}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </body>
 </html>
