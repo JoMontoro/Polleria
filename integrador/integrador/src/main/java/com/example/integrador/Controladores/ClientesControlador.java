@@ -64,15 +64,7 @@ public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
             return "formclientes";
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     @GetMapping("/getEdit/{cliente_id}")
     public String editarFormClientes(Model model, @PathVariable("cliente_id") Long id) {

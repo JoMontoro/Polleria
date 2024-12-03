@@ -12,3 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface EmpleadoDAO extends JpaRepository<Empleados, Long>{
     
 }
+
+
