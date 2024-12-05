@@ -156,6 +156,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
     const btnRealizarPago = document.getElementById('realizar-pago');
+    const datosFactura = document.getElementById('datosFactura');
+    const datosPersonales = document.getElementById('datosPersonales');
+    const datosTarjeta = document.getElementById('datosTarjeta');
+
+    // Escucha el cambio de tipo de comprobante
+    document.querySelectorAll('input[name="comprobante"]').forEach((input) => {
+        input.addEventListener('change', function () {
+            if (this.value === 'factura') {
+                datosFactura.style.display = 'block'; // Mostrar campos de factura
+                datosPersonales.style.display = 'block'; // Mostrar datos personales
+            } else {
+                datosFactura.style.display = 'none'; // Ocultar campos de factura
+                datosPersonales.style.display = 'none'; // Ocultar datos personales
+            }
+        });
+    });
 
     btnRealizarPago.addEventListener('click', function (event) {
         event.preventDefault(); // Evita que el formulario se envíe antes de realizar las validaciones
@@ -169,116 +185,153 @@ document.addEventListener('DOMContentLoaded', function () {
         const telefono = document.getElementById('telefono').value;
         const metodoPago = document.querySelector('input[name="metodoPago"]:checked').value;
         const comprobante = document.querySelector('input[name="comprobante"]:checked').value;
+        const ruc = document.getElementById('ruc').value;
+        const razonSocial = document.getElementById('razonSocial').value;
 
-        // Validar si el pago es con boleta y en efectivo
-        if (comprobante === 'boleta' && metodoPago === 'efectivo') {
-            // Crear el PDF
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-
-            // Ruta al logo dentro del proyecto
-            const logoPath = '/img/Logo_Gian.png'; // Asegúrate de que esta ruta sea correcta
-            const imgX = 10, imgY = 10, imgWidth = 30, imgHeight = 30;
-
-            // Cargar el logo desde el proyecto local
-            const loadImage = (path) => {
-                return new Promise((resolve, reject) => {
-                    const img = new Image();
-                    img.src = path;
-                    img.onload = () => resolve(img);
-                    img.onerror = (err) => reject(err);
-                });
-            };
-
-            // Generar el PDF tras cargar el logo
-            loadImage(logoPath)
-                .then((logo) => {
-                    // Agregar el logo al PDF
-                    doc.addImage(logo, 'PNG', imgX, imgY, imgWidth, imgHeight);
-
-                    // **Encabezado**
-                    doc.setFontSize(16);
-                    doc.setFont("Helvetica", "bold");
-                    doc.text("GIANCARLO EIRL", 50, 20);
-                    doc.setFontSize(12);
-                    doc.text("Av. Siempre Viva 123, Ciudad X", 50, 28);
-                    doc.text("R.U.C. 20530241905", 50, 34);
-                    doc.setFontSize(14);
-                    doc.text("BOLETA", 170, 20);
-                    doc.setFontSize(12);
-                    doc.text("001-503", 170, 28);
-
-                    // **Datos del Cliente**
-                    doc.setFillColor(230, 230, 230);
-                    const rectHeight = referencia ? 40 : 30; // Ajusta la altura del rectángulo según la referencia
-                    doc.rect(10, 45, 190, rectHeight, 'F');
-                    let textY = 55;
-                    doc.setFont("Helvetica", "normal");
-                    doc.text(`Señor (es): ${nombre} ${apellido}`, 12, textY);
-                    textY += 6;
-                    doc.text(`Email: ${email}`, 12, textY);
-                    textY += 6;
-                    doc.text(`Teléfono: ${telefono}`, 12, textY);
-                    textY += 6;
-                    doc.text(`Dirección destino: ${direccion}`, 12, textY);
-                    if (referencia) {
-                        textY += 6;
-                        doc.text(`Referencia: ${referencia}`, 12, textY);
-                    }
-
-                    // **Detalle de Productos**
-                    doc.setLineWidth(0.5);
-                    doc.line(10, 85, 200, 85); // Línea superior de la tabla
-                    doc.setFontSize(10);
-                    doc.setFont("Helvetica", "bold");
-                    doc.text("CANTIDAD", 12, 90);
-                    doc.text("DESCRIPCIÓN", 60, 90);
-                    doc.text("PRECIO", 150, 90);
-                    doc.text("TOTAL", 180, 90);
-                    doc.line(10, 95, 200, 95); // Línea inferior de la cabecera de la tabla
-
-                    // Obtener detalles del carrito
-                    const itemsCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
-                    let y = 100; // Posición inicial de las filas
-                    doc.setFont("Helvetica", "normal");
-                    itemsCarrito.forEach((item, index) => {
-                        doc.text(`${item.cantidad}`, 12, y);
-                        doc.text(`${item.nombre}`, 60, y);
-                        doc.text(`S/ ${item.precio.toFixed(2)}`, 150, y);
-                        doc.text(`S/ ${(item.precio * item.cantidad).toFixed(2)}`, 180, y);
-                        y += 10; // Incrementar posición para la siguiente fila
-                    });
-
-                    doc.line(10, y, 200, y); // Línea inferior de la tabla
-
-                    // **Otros Datos**
-                    const total = itemsCarrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
-                    doc.setFont("Helvetica", "bold");
-                    doc.text(`Total a pagar: S/ ${total.toFixed(2)}`, 150, y + 10);
-
-                    // **Comentario**
-                    doc.text("Gracias por su compra", 98, y + 45);
-
-                    // Descargar el PDF
-                    doc.save('Boleta.pdf');
-                })
-                .catch((error) => {
-                    console.error("Error al cargar el logo:", error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'No se pudo cargar el logo. Por favor, verifica la ruta.'
-                    });
-                });
-        } else {
+        // Validaciones básicas
+        if (!direccion || !nombre || !apellido || !email || !telefono || !metodoPago || !comprobante) {
             Swal.fire({
                 icon: 'error',
-                title: 'Error de Pago',
-                text: 'Debe seleccionar "Boleta" y "Efectivo" para generar la boleta.'
+                title: 'Error',
+                text: 'Por favor, completa todos los campos requeridos.'
             });
+            return;
         }
+
+        if (comprobante === 'factura' && (!ruc || !razonSocial)) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, completa los campos de RUC y Razón Social para la factura.'
+            });
+            return;
+        }
+
+        // Crear el PDF
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        // Ruta al logo dentro del proyecto
+        const logoPath = '/img/Logo_Gian.png'; // Asegúrate de que esta ruta sea correcta
+        const imgX = 10, imgY = 10, imgWidth = 30, imgHeight = 30;
+
+        // Cargar el logo desde el proyecto local
+        const loadImage = (path) => {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.src = path;
+                img.onload = () => resolve(img);
+                img.onerror = (err) => reject(err);
+            });
+        };
+
+        // Generar el PDF tras cargar el logo
+        loadImage(logoPath)
+            .then((logo) => {
+                // Agregar el logo al PDF
+                doc.addImage(logo, 'PNG', imgX, imgY, imgWidth, imgHeight);
+
+                // Encabezado dinámico según comprobante
+                doc.setFontSize(16);
+                doc.setFont("Helvetica", "bold");
+                doc.text("GIANCARLO EIRL", 50, 20);
+                doc.setFontSize(12);
+                doc.text("Jr victor a Belaunde, 490 Carmen", 50, 28);
+                // Mostrar el RUC de la empresa solo si es boleta
+                if (comprobante === 'boleta') {
+                    doc.text("R.U.C. 20530241905", 50, 34);  // Solo en la boleta
+                }
+
+                doc.setFontSize(14);
+                doc.text(comprobante.toUpperCase(), 170, 20); // Mostrar tipo de comprobante
+                doc.setFontSize(12);
+                doc.text("001-503", 170, 28);
+
+                // Si es factura, agregar RUC y Razón Social
+                if (comprobante === 'factura') {
+                    doc.text(`RUC: ${ruc}`, 12, 45);
+                    doc.text(`Razón Social: ${razonSocial}`, 12, 51);
+                }
+
+                // Datos del cliente
+                doc.setFillColor(230, 230, 230);
+                const rectHeight = referencia ? 50 : 40; // Ajusta la altura del rectángulo según la referencia
+                doc.rect(10, 60, 190, rectHeight, 'F');
+                let textY = 70;
+                doc.setFont("Helvetica", "normal");
+                doc.text(`Nombre: ${nombre} ${apellido}`, 12, textY);
+                textY += 6;
+                doc.text(`Email: ${email}`, 12, textY);
+                textY += 6;
+                doc.text(`Teléfono: ${telefono}`, 12, textY);
+                textY += 6;
+                doc.text(`Dirección: ${direccion}`, 12, textY);
+                if (referencia) {
+                    textY += 6;
+                    doc.text(`Referencia: ${referencia}`, 12, textY);
+                }
+
+                // Detalle de productos
+                doc.setLineWidth(0.5);
+                doc.line(10, 95, 200, 95); // Línea superior de la tabla
+                doc.setFontSize(10);
+                doc.setFont("Helvetica", "bold");
+                doc.text("CANTIDAD", 12, 100);
+                doc.text("DESCRIPCIÓN", 60, 100);
+                doc.text("PRECIO", 150, 100);
+                doc.text("TOTAL", 180, 100);
+                doc.line(10, 105, 200, 105); // Línea inferior de la cabecera de la tabla
+
+                // Obtener detalles del carrito
+                const itemsCarrito = JSON.parse(localStorage.getItem('carrito')) || [];
+                let y = 110; // Posición inicial de las filas
+                doc.setFont("Helvetica", "normal");
+                itemsCarrito.forEach((item) => {
+                    doc.text(`${item.cantidad}`, 12, y);
+                    doc.text(`${item.nombre}`, 60, y);
+                    doc.text(`S/ ${item.precio.toFixed(2)}`, 150, y);
+                    doc.text(`S/ ${(item.precio * item.cantidad).toFixed(2)}`, 180, y);
+                    y += 10; // Incrementar posición para la siguiente fila
+                });
+
+                doc.line(10, y, 200, y); // Línea inferior de la tabla
+
+                // Total a pagar
+                const total = itemsCarrito.reduce((acc, item) => acc + (item.precio * item.cantidad), 0);
+                doc.setFont("Helvetica", "bold");
+                doc.text(`Total a pagar: S/ ${total.toFixed(2)}`, 150, y + 10);
+
+                // Generar QR solo si el comprobante es boleta
+                if (comprobante === 'boleta') {
+                    const qrText = `Comprobante de pago - Total: S/ ${total.toFixed(2)}`;
+                    const qrCode = new QRCode(document.createElement('div'), {
+                        text: qrText,
+                        width: 50,
+                        height: 50,
+                        colorDark : "#000000",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+
+                    // Añadir el QR al PDF
+                    const qrImage = qrCode._oDrawing._elCanvas.toDataURL();
+                    doc.addImage(qrImage, 'PNG', 150, y + 30, 30, 30); // Ajusta la posición y tamaño del QR
+                }
+
+                // Mensaje final
+                doc.text("Gracias por su compra", 98, y + 45);
+
+                // Descargar el PDF
+                const fileName = comprobante.toLowerCase() === "factura" ? "Factura.pdf" : "Boleta.pdf";
+                doc.save(fileName);
+            })
+            .catch((error) => {
+                console.error("Error al cargar el logo:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'No se pudo cargar el logo. Por favor, verifica la ruta.'
+                });
+            });
     });
 });
-
-
-

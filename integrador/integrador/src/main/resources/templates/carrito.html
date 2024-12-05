@@ -22,6 +22,12 @@
 <!--    <link rel="stylesheet" th:href="@{/styles/index.css}">-->
     <link rel="stylesheet" th:href="@{/styles/menu.css}">
     <link rel="stylesheet" th:href="@{/styles/navbar-footer.css}">
+    <!-- jsPDF CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+
+
 </head>
 
 <!--Header-->
@@ -74,9 +80,9 @@
 
                     <div id="datosFactura" style="display: none;">
                         <input type="text" class="form-control mb-2" id="ruc"
-                               placeholder="RUC">
+                               placeholder="RUC" >
                         <input type="text" class="form-control mb-2" id="razonSocial"
-                               placeholder="Razón Social">
+                               placeholder="Razón Social" >
                     </div>
 
                     <!-- ... código anterior ... -->

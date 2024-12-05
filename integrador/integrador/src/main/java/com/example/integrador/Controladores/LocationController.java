@@ -12,7 +12,7 @@ public class LocationController {
 
     @GetMapping("/location")
     public String getLocation(Model model) {
-        model.addAttribute("address", "Av. Siempre Viva 123, Ciudad X");
+        model.addAttribute("address", "Jr victor a Belaunde, 490 Carmen");
         model.addAttribute("phone", "+51 999 888 777");
         model.addAttribute("hours", "Lunes a Domingo: 9:00 AM - 9:00 PM");
         return "location";
