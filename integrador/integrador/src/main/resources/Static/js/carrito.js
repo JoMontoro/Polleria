@@ -252,7 +252,7 @@ async function procesarPedido() {
             }
         });
 
-        // Aquí iría la lógica para enviar el pedido al servidor
+
         // Por ahora simulamos un delay
         await new Promise(resolve => setTimeout(resolve, 2000));
 

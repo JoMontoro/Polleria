@@ -32,7 +32,7 @@
             <div class="col-md-6 text-center text-md-start">
                 <h2 class="promo-title">Los Reyes del Sabor</h2>
                 <img src="img/Logo_gian.png" alt="Promo Pollo" style="max-width: 400px;">
-                <a th:href="@{/carta}"  class="btn btn-danger">Pide ya!</a>
+                <a th:href="@{/menu}"  class="btn btn-danger">Pide ya!</a>
             </div>
             <div class="col-md-6 text-center">
                 <div id="promoCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -44,11 +44,19 @@
                     <div class="carousel-inner">
                         <!-- Primer slide -->
                         <div class="carousel-item active">
-                            <img src="img/promo1.png" alt="Promo Pollo" class="d-block w-100 img-fluid rounded-circle" style="max-width: 500px; margin-left: 100px;">
+                            <img src="img/img1.png" alt="Promo Pollo" class="d-block w-100 img-fluid rounded-circle" style="max-width: 500px; margin-left: 100px;">
                         </div>
                         <!-- Segundo slide  -->
                         <div class="carousel-item">
-                            <img src="img/PolloCuarto.jpg" alt="Promo Pollo 2" class="d-block w-100 img-fluid rounded-circle" style="max-width: 500px;margin-left: 100px;">
+                            <img src="img/img2.png" alt="Promo Pollo 2" class="d-block w-100 img-fluid rounded-circle" style="max-width: 500px;margin-left: 100px;">
+                        </div>
+                        <!-- Tercer slide -->
+                        <div class="carousel-item ">
+                            <img src="img/img3.png" alt="Promo Pollo 3" class="d-block w-100 img-fluid rounded-circle" style="max-width: 500px; margin-left: 100px;">
+                        </div>
+                        <!-- Cuarto slide -->
+                        <div class="carousel-item ">
+                            <img src="img/img4.png" alt="Promo Pollo 4" class="d-block w-100 img-fluid rounded-circle" style="max-width: 500px; margin-left: 100px;">
                         </div>
                     </div>
                     <!-- Controles para anterior/siguiente -->
@@ -75,7 +83,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Pollos</h5>
                         <!-- Usar btn-compra de tu botones.css para un estilo de compra -->
-                        <a th:href="@{/menu}" class="btn btn-danger">Ver más</a>
+                        <a href="/menu?categoria=platos" class="btn btn-danger">Ver más</a>
                     </div>
                 </div>
             </div>
@@ -86,7 +94,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Cocteles</h5>
                         <!-- Usar btn-danger para estilo rojo -->
-                        <a th:href="@{/menu}" class="btn btn-danger">Ver más</a>
+                        <a href="/menu?categoria=cocteles" class="btn btn-danger">Ver más</a>
                     </div>
                 </div>
             </div>
@@ -97,7 +105,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Parrillas</h5>
                         <!-- Otro uso del btn-danger -->
-                        <a th:href="@{/menu}" class="btn btn-danger">Ver más</a>
+                        <a href="/menu?categoria=parrillas" class="btn btn-danger">Ver más</a>
                     </div>
                 </div>
             </div>

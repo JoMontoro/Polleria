@@ -23,7 +23,7 @@
             <div class="text-center mb-4">
                 <img src="img/Component 19.png" alt="Logo" class="img-fluid" style="max-width: 80px;">
                 <h2>Giancarlo</h2>
-                <p>Pato a la Reina</p>
+                
             </div>
             <ul class="nav flex-column">
                 <li class="nav-item">
@@ -36,11 +36,11 @@
                     <a class="nav-link text-white" th:href="@{/empleadoslista}">Gestión de Empleados</a>
                 </li>
                
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="#">Gestión de Almacén</a>
-                </li>
+               
             </ul>
-            <button class="btn btn-warning mt-4 w-100">Cerrar Sesión</button>
+             <form th:action="@{/logout}" method="POST">
+                <button type="submit" class="btn btn-warning mt-4 w-100">Cerrar Sesión</button>
+            </form>
         </nav>
 
         <!-- Main Content -->

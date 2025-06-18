@@ -26,17 +26,17 @@ public class ClientesControlador {
     ServicioClientes servicioCliente;
     
    
-    @GetMapping("/excelx")
-    public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
-        ByteArrayInputStream flujo = servicioCliente.generarExcel();
-        HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=Clientes.xls");
-        return ResponseEntity.ok().
-                headers(headers).
-                body(new InputStreamResource(flujo));
-    }
-    
+  @GetMapping("/excelx")
+public ResponseEntity<InputStreamResource> exportarExcel() throws IOException {
+    ByteArrayInputStream flujo = servicioCliente.generarExcel();
+    HttpHeaders headers = new HttpHeaders();
+    headers.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Clientes.xls");
+    headers.add(HttpHeaders.CONTENT_TYPE, "application/vnd.ms-excel"); // Tipo de contenido para archivos Excel
+
+    return ResponseEntity.ok()
+            .headers(headers)
+            .body(new InputStreamResource(flujo));
+}
     
     
     @GetMapping("/clientelista")
@@ -64,15 +64,7 @@ public class ClientesControlador {
             return "formclientes";
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     @GetMapping("/getEdit/{cliente_id}")
     public String editarFormClientes(Model model, @PathVariable("cliente_id") Long id) {
