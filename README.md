@@ -81,4 +81,4 @@ Si deseas colaborar con el proyecto, envía tus sugerencias o mejoras en nuestro
 - **👤 Josue Quispe Franco:** josueqf@gmail.com
 - **👤 Sebastian Alejandro Berna Díaz:** sebastianbd@gmail.com
 - **👤 Omar Antony Zamora Yepez:** omaramy@gmail.com
-- **👤 Jose Antonio Montoro Garcia:** josemga@gmail.com
+- **👤 Jose Antonio Montoro Garcia:** jmg050299@gmail.com
