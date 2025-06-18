@@ -1,6 +1,7 @@
 
 package com.example.integrador.Entidades_Model;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,21 +15,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-
-@Table (name = "productos")
-public class Productos {
-     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private Long producto_id;
+@Table (name = "Chefs")
+public class Chefs {
+    @Id
     
-    private String nombre_producto;
-    private String descripcion;
-    private Long precio;
-    private Integer stock;
-    private Long proveedor_id;
-    private Long almacen_id;
-    private String imagen_url;
-    private String categoria;
-
-
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+       private Long chefid;
+    
+    private String nombre;
+    private String apellido;
+    private String especialidad;
+    private String telefono;
+    private String correo_electronico;
+    
+    
 }

@@ -1,0 +1,33 @@
+<!-- Footer -->
+<div th:fragment="footer" class="container-fluid m-0 p-0" id="container-footer" style="background-color: #1d1d1d; color: #fff;">
+    <footer class="container py-4">
+        <div class="row justify-content-between align-items-center text-center">
+            <!-- Sección de Contacto -->
+            <div class="col-12 col-md-4 mb-3">
+                <img src="img/Logo_gian.png" alt="Logo" style="width: 50px;" class="mb-2">
+                <h5>Contáctanos</h5>
+                <p>
+                    <i class="fas fa-phone-alt"></i> 946-109-640<br>
+                    <i class="fas fa-phone-alt"></i> 073-387708
+                </p>
+            </div>
+
+            <!-- Sección de Nosotros -->
+            <div class="col-12 col-md-4 mb-3">
+                <h5>Nosotros</h5>
+                <ul class="list-unstyled">
+                    <li><a th:href="@{/mision}" class="text-light">Misión y Visión</a></li>
+                    <li><a th:href="@{/escribenos}" class="text-light">Escríbenos</a></li>
+                </ul>
+            </div>
+
+            <!-- Sección de Redes Sociales -->
+            <div class="col-12 col-md-4 mb-3">
+                <h5>Redes sociales</h5>
+                <p>
+                    <i class="fab fa-facebook"></i> <a href="https://www.facebook.com" class="text-light" target="_blank">Pollos a La Brasa Giancarlo Eirl</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+</div>

@@ -1,0 +1,146 @@
+/* Navbar */
+.navbar {
+    background-color: #000; /* Fondo negro */
+    height: 6.25rem; /* Altura de la barra de navegación */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem; /* Espaciado interior */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.navbar-brand img {
+    height:10em; /* Tamaño del logotipo */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    background-color: #333;
+    padding: 0.5rem;
+    border-radius: 25px;
+}
+
+.search-container input {
+    border: none;
+    background: none;
+    color: white;
+    margin-left: 10px;
+    outline: none;
+}
+
+.search-container input::placeholder {
+    color: #ccc;
+}
+
+/* Enlaces del menú */
+.navbar-nav .nav-item {
+    margin: 0 10px; /* Espaciado entre elementos */
+    position: relative;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 300;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #F01A24; /* Cambia el color del enlace al pasar el ratón */
+}
+
+.navbar-nav .nav-item::after {
+    content: "";
+    width: 1px;
+    height: 30px;
+    background-color: #FFCC00; /* Línea amarilla separadora */
+    position: absolute;
+    right: -15px;
+    top: 10px;
+}
+
+.navbar-nav .nav-item:last-child::after {
+    display: none; /* Elimina el separador del último ítem */
+}
+
+/* Iconos de usuario y carrito */
+.navbar-icons {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-icons img {
+    height: 24px;
+    margin-left: 15px;
+}
+
+/* Botón de alternar (pantallas pequeñas) */
+.navbar-toggler {
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-toggler-icon {
+    color: white;
+}
+
+#container-footer {
+    background-color: #1d1d1d; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 20px 0;
+}
+
+#container-footer h5 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+#container-footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#container-footer a:hover {
+    text-decoration: underline;
+}
+
+#container-footer p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+#container-footer .fab, #container-footer .fas {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+#container-footer img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+.cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    min-width: 18px;
+    text-align: center;
+}
