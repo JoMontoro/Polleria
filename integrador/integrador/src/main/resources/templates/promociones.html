@@ -146,7 +146,7 @@
             <img th:src="@{/img/{img}(img=${promo.imagenUrl})}" th:alt="${promo.nombre}">
             <h2 th:text="${promo.nombre}"></h2>
             <p th:text="${promo.descripcion}"></p>
-            <span th:text="'S/ ' + ${promo.precio}"></span>
+            <span th:text="'S/ ' + ${#numbers.formatDecimal(promo.precio / 100.0, 1, 2)}"></span>
         </div>
     </div>
     <button class="btn btn-next" id="btn-next">&#8250;</button>

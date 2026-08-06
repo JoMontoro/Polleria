@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <!-- Logotipo -->
             <a class="navbar-brand" th:href="@{/}" >
-                <img src="img/logo_pollito.png" alt="Logo">
+                <img th:src="@{/img/logo_pollito.png}" alt="Logo">
             </a>
 
             <!-- Enlaces del menú -->
@@ -20,9 +20,9 @@
 
             <!-- Iconos de usuario y carrito -->
             <div class="navbar-icons">
-                <a th:href="@{/login}" ><img src="img/user.png" alt="Usuario"></a>
+                <a th:href="@{/login}" ><img th:src="@{/img/user.png}" alt="Usuario"></a>
                 <a th:href="@{/carrito}" class="cart-icon">
-                    <img src="img/carrito.png" alt="Carrito">
+                    <img th:src="@{/img/carrito.png}" alt="Carrito">
                     <span class="cart-counter">0</span>
                 </a>
                 <!-- Botón de alternar -->

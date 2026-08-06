@@ -32,7 +32,7 @@ function filtrarProductos(categoriaSeleccionada) {
                         <div class="card-body text-center">
                             <h5 class="product-title">${producto.nombre_producto}</h5>
                             <p class="product-description">${producto.descripcion}</p>
-                            <p class="product-price">S/ ${producto.precio}</p>
+                            <p class="product-price">S/ ${(producto.precio / 100).toFixed(2)}</p>
                             <button class="btn btn-cart" onclick="agregarAlCarrito(this)">
                                 <i class="fas fa-shopping-cart"></i>
                             </button>

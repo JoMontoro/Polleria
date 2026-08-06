@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -28,9 +29,11 @@ public class ProductoController {
     // Guardar nuevo producto
     @PostMapping("/guardarProducto")
     public String guardarProducto(@ModelAttribute Productos producto,
+                                  @RequestParam("precio_soles") BigDecimal precioSoles,
                                   @RequestParam("imagen") MultipartFile imagen,
                                   RedirectAttributes redirectAttributes) {
         try {
+            producto.setPrecio(precioSoles.movePointRight(2).longValueExact());
             productoService.guardarProducto(producto, imagen);
             redirectAttributes.addFlashAttribute("mensaje", "Producto guardado exitosamente");
             return "redirect:/menu";

@@ -59,7 +59,7 @@ public ByteArrayInputStream generarExcel() throws IOException {
     HSSFSheet sheet = workbook.createSheet("Chefs Info");
 
     // Cargar y agregar imagen como logo
-    ClassPathResource imgFile = new ClassPathResource("Static/img/Logo_gian.png"); // Asegúrate de que la ruta sea correcta
+    ClassPathResource imgFile = new ClassPathResource("static/img/Logo_gian.png"); // Asegúrate de que la ruta sea correcta
     InputStream logoInputStream = imgFile.getInputStream();
     byte[] logoBytes = logoInputStream.readAllBytes();
     int pictureIndex = workbook.addPicture(logoBytes, HSSFWorkbook.PICTURE_TYPE_PNG);

@@ -57,13 +57,13 @@
              th:data-categoria="${producto.categoria}"
              class="col-12 col-md-6 col-xl-4 d-flex justify-content-center producto-card">
             <div class="card product-card" th:data-id="${producto.producto_id}">
-                <img th:src="@{/img/uploads/} + ${producto.imagen_url}"
+                <img th:src="${#strings.isEmpty(producto.imagen_url)} ? @{/img/promo1.png} : @{/img/uploads/{name}(name=${producto.imagen_url})}"
                      class="product-img"
                      alt="Imagen del producto">
                 <div class="card-body text-center">
                     <h5 class="product-title" th:text="${producto.nombre_producto}">Nombre del Producto</h5>
                     <p class="product-description" th:text="${producto.descripcion}">Descripción del Producto</p>
-                    <p class="product-price" th:text="'S/ ' + ${producto.precio}">S/ 0.00</p>
+                    <p class="product-price" th:text="'S/ ' + ${#numbers.formatDecimal(producto.precio / 100.0, 1, 2)}">S/ 0.00</p>
                     <button class="btn btn-cart" onclick="agregarAlCarrito(this)">
                         <i class="fas fa-shopping-cart"></i>
                     </button>

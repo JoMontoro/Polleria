@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -30,14 +29,12 @@ public class ProductoService {
 
     public Productos guardarProducto(Productos producto, MultipartFile imagen) throws IOException {
         // Crear directorio si no existe
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdirs();
-        }
+        Path uploadDir = Paths.get(uploadPath).toAbsolutePath().normalize();
+        Files.createDirectories(uploadDir);
 
         // Generar nombre único para la imagen
         String nombreArchivo = UUID.randomUUID().toString() + "_" + imagen.getOriginalFilename();
-        Path rutaCompleta = Paths.get(uploadPath + nombreArchivo);
+        Path rutaCompleta = uploadDir.resolve(nombreArchivo);
 
         // Guardar imagen
         Files.copy(imagen.getInputStream(), rutaCompleta, StandardCopyOption.REPLACE_EXISTING);
