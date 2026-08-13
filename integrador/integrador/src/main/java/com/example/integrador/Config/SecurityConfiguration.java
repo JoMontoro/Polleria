@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -33,37 +34,56 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    public AuthenticationSuccessHandler loginSuccessHandler() {
+        return (request, response, authentication) -> {
+            boolean esAdmin = authentication.getAuthorities().stream()
+                    .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"));
+            response.sendRedirect(esAdmin ? "/listageneral" : "/menu");
+        };
+    }
+
+    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(authz -> authz
-                // Rutas públicas
+                // Rutas públicas (clientes sin necesidad de login)
                 .requestMatchers(
                     "/",
                     "/index",
-                    "/js/**", 
-                    "/css/**", 
+                    "/js/**",
+                    "/css/**",
                     "/img/**",
                     "/styles/**",
                     "/fragments/**",
                     "/error",
+                    "/login",
+                    "/logout",
                     "/contacto",
                     "/menu",
                     "/carta",
                     "/carrito",
-                    "/login",
-                    "/registro/**", // Agregado /** para cubrir todas las subrutas de registro
-                    "/registro-exitoso" // Nueva ruta para mensaje de éxito
+                    "/productos",
+                    "/promociones",
+                    "/nosotros",
+                    "/location",
+                    "/forgot-password",
+                    "/reset-password",
+                    "/registro/**",
+                    "/registro-exitoso",
+                    "/logs/**"
                 ).permitAll()
-                // Rutas protegidas que requieren autenticación
+                // Panel de administración: solo ROLE_ADMIN
                 .requestMatchers(
                     "/listageneral/**",
+                    "/ladmin/**",
+                    "/nuevoProducto/**",
+                    "/guardarProducto",
                     "/clientelista/**",
                     "/empleadoslista/**",
                     "/cheflista/**",
                     "/formclientes/**",
                     "/formempleados/**",
-                    "/nuevoProducto/**",
                     "/formchef/**",
                     "/registrarclientes/**",
                     "/registrarempleados/**",
@@ -77,14 +97,16 @@ public class SecurityConfiguration {
                     "/excelx/**",
                     "/excele/**",
                     "/excelc/**",
-                    "/admin/**" // Agregado para rutas de administrador
-                ).authenticated()
-                .anyRequest().permitAll()
+                    "/usuarios/**",
+                    "/admin/**"
+                ).hasRole("ADMIN")
+                // Cualquier otra ruta requiere estar autenticado
+                .anyRequest().authenticated()
             )
             .formLogin(form -> form
                 .loginPage("/login")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/listageneral", true)
+                .successHandler(loginSuccessHandler())
                 .failureUrl("/login?error=true")
                 .permitAll()
             )
@@ -95,7 +117,7 @@ public class SecurityConfiguration {
                 .clearAuthentication(true)
                 .permitAll()
             )
-            .authenticationProvider(authenticationProvider()); // Agregado el provider
+            .authenticationProvider(authenticationProvider());
 
         return http.build();
     }

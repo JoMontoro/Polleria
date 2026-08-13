@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -18,6 +20,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/registro")
 public class RegistroUsuarioControlador {
+
+    private static final Logger log = LoggerFactory.getLogger(RegistroUsuarioControlador.class);
 
     @Autowired
     private UsuarioServicio usuarioServicio;
@@ -40,6 +44,7 @@ public class RegistroUsuarioControlador {
             redirectAttributes.addFlashAttribute("registroExitoso", true);
             return "redirect:/login?registro=true";
         } catch (Exception e) {
+            log.error("Error al registrar el usuario", e);
             redirectAttributes.addFlashAttribute("error", "Error al registrar el usuario: " + e.getMessage());
             return "redirect:/registro";
         }

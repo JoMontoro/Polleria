@@ -1,5 +1,5 @@
 <!-- Header -->
-<div th:fragment="header" class="container-fluid m-0 p-0">
+<div th:fragment="header" class="container-fluid m-0 p-0" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <!--NavBar-->
     <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
@@ -12,6 +12,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" th:href="@{/menu}">Carta</a></li>
+                    <li class="nav-item" sec:authorize="hasRole('ADMIN')"><a class="nav-link" th:href="@{/listageneral}">Panel Admin</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/promociones}">Promociones</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/nosotros}">Nosotros</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/menu?categoria=cocteles}">Parada 69 Gian'</a></li>
@@ -19,12 +20,20 @@
             </div>
 
             <!-- Iconos de usuario y carrito -->
-            <div class="navbar-icons">
-                <a th:href="@{/login}" ><img th:src="@{/img/user.png}" alt="Usuario"></a>
+            <div class="navbar-icons d-flex align-items-center gap-2">
                 <a th:href="@{/carrito}" class="cart-icon">
                     <img th:src="@{/img/carrito.png}" alt="Carrito">
                     <span class="cart-counter">0</span>
                 </a>
+                <div sec:authorize="isAnonymous()">
+                    <a th:href="@{/login}" ><img th:src="@{/img/user.png}" alt="Usuario"></a>
+                </div>
+                <div sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-2">
+                    <span class="text-white" sec:authentication="name"></span>
+                    <form th:action="@{/logout}" method="post" class="m-0">
+                        <button type="submit" class="btn btn-outline-light btn-sm">Salir</button>
+                    </form>
+                </div>
                 <!-- Botón de alternar -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>

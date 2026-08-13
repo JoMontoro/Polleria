@@ -22,7 +22,9 @@ public class ProductoController {
 
     // formulario de nuevo producto
     @GetMapping("/nuevoProducto")
-    public String mostrarFormularioNuevoProducto() {
+    public String mostrarFormularioNuevoProducto(Model model) {
+        model.addAttribute("proveedores", productoService.obtenerProveedores());
+        model.addAttribute("almacenes", productoService.obtenerAlmacenes());
         return "nuevoProducto";
     }
 

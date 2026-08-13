@@ -2,9 +2,10 @@ package com.example.integrador.Services;
 
 import com.example.integrador.Entidades_Model.Rol;
 import com.example.integrador.Entidades_Model.Usuario;
+import com.example.integrador.Repositorio.RolRepositorio;
 import com.example.integrador.Repositorio.UsuarioRepositorio;
 import com.example.integrador.controlador.dto.UsuarioRegistroDTO;
-import java.util.Arrays;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,31 +15,38 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServicioImpl implements UsuarioServicio {
 
     private final UsuarioRepositorio usuarioRepositorio;
+    private final RolRepositorio rolRepositorio;
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UsuarioServicioImpl(UsuarioRepositorio usuarioRepositorio, BCryptPasswordEncoder passwordEncoder) {
+    public UsuarioServicioImpl(UsuarioRepositorio usuarioRepositorio,
+                               RolRepositorio rolRepositorio,
+                               BCryptPasswordEncoder passwordEncoder) {
         this.usuarioRepositorio = usuarioRepositorio;
+        this.rolRepositorio = rolRepositorio;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public Usuario guardar(UsuarioRegistroDTO registroDTO) {
+        // Reutilizar el rol existente para no crear filas duplicadas por registro
+        Rol rolUser = rolRepositorio.findByNombre("ROLE_USER").stream().findFirst().orElse(null);
+        if (rolUser == null) {
+            rolUser = rolRepositorio.save(new Rol("ROLE_USER"));
+        }
         Usuario usuario = new Usuario(
                 registroDTO.getNombre(),
                 registroDTO.getApellido(),
                 registroDTO.getEmail(),
                 passwordEncoder.encode(registroDTO.getPassword()),
-                Arrays.asList(new Rol("ROLE_USER"))
+                List.of(rolUser)
         );
         return usuarioRepositorio.save(usuario);
     }

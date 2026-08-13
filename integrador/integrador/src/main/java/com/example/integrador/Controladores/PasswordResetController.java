@@ -6,6 +6,8 @@ package com.example.integrador.Controladores;
 
 
 import com.example.integrador.Services.PasswordResetService;
+import com.example.integrador.Services.EmailService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class PasswordResetController {
 
     private final PasswordResetService passwordResetService;
+    private final EmailService emailService;
 
     @GetMapping("/forgot-password")
     public String showForgotPasswordForm() {
@@ -27,13 +30,23 @@ public class PasswordResetController {
 
     @PostMapping("/forgot-password")
     public String processForgotPassword(@RequestParam("email") String email,
+                                      HttpServletRequest request,
                                       RedirectAttributes redirectAttributes) {
         try {
             String token = passwordResetService.generateResetToken(email);
-            return "redirect:/reset-password?token=" + token;
+
+            if (token != null) {
+                String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+                emailService.sendPasswordResetEmail(email, token, baseUrl);
+            }
+
+            // Mensaje genérico para no revelar si el correo existe
+            redirectAttributes.addFlashAttribute("success",
+                "Si el correo se encuentra registrado, hemos enviado un enlace de recuperación a tu bandeja");
+            return "redirect:/forgot-password";
         } catch (Exception e) {
-            redirectAttributes.addFlashAttribute("error", 
-                "No se encontró una cuenta con ese correo electrónico");
+            redirectAttributes.addFlashAttribute("error",
+                "No se pudo enviar el correo. Inténtalo nuevamente o revisa la configuración del servidor de correo.");
             return "redirect:/forgot-password";
         }
     }

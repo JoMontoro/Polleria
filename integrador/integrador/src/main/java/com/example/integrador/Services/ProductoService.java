@@ -5,7 +5,11 @@
 package com.example.integrador.Services;
 
 import com.example.integrador.Entidades_Model.Productos;
+import com.example.integrador.Entidades_Model.Proveedores;
+import com.example.integrador.Entidades_Model.Almacenes;
 import com.example.integrador.Repositorio.ProductosDAO;
+import com.example.integrador.Repositorio.ProveedoresDAO;
+import com.example.integrador.Repositorio.AlmacenesDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -23,6 +27,12 @@ import java.util.UUID;
 public class ProductoService {
     @Autowired
     private ProductosDAO productosDAO;
+
+    @Autowired
+    private ProveedoresDAO proveedoresDAO;
+
+    @Autowired
+    private AlmacenesDAO almacenesDAO;
 
     @Value("${upload.path}")
     private String uploadPath;
@@ -53,6 +63,15 @@ public class ProductoService {
     // Obtener productos por categoría
     public List<Productos> obtenerProductosPorCategoria(String categoria) {
         return productosDAO.findByCategoria(categoria);
+    }
+
+    // ----------------------------Proveedores y almacenes para el formulario
+    public List<Proveedores> obtenerProveedores() {
+        return proveedoresDAO.findAll();
+    }
+
+    public List<Almacenes> obtenerAlmacenes() {
+        return almacenesDAO.findAll();
     }
 
 }

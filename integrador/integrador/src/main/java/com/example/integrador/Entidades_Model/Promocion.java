@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table(name = "promocion")
@@ -31,6 +32,14 @@ public class Promocion {
     @Column(name = "fecha_fin")
     private LocalDate fechaFin;
 
+    @ManyToMany
+    @JoinTable(
+            name = "promocion_productos",
+            joinColumns = @JoinColumn(name = "promocion_id"),
+            inverseJoinColumns = @JoinColumn(name = "producto_id")
+    )
+    private Set<Productos> productos;
+
     // Getters y Setters
     public Integer getPromocionId() { return promocionId; }
     public void setPromocionId(Integer promocionId) { this.promocionId = promocionId; }
@@ -48,4 +57,6 @@ public class Promocion {
     public void setFechaInicio(LocalDate fechaInicio) { this.fechaInicio = fechaInicio; }
     public LocalDate getFechaFin() { return fechaFin; }
     public void setFechaFin(LocalDate fechaFin) { this.fechaFin = fechaFin; }
+    public Set<Productos> getProductos() { return productos; }
+    public void setProductos(Set<Productos> productos) { this.productos = productos; }
 }

@@ -27,7 +27,7 @@ public class PasswordResetService {
         Usuario usuario = usuarioRepository.findByEmail(email);
         
         if (usuario == null) {
-            throw new RuntimeException("Usuario no encontrado");
+            return null; // No revelar si el correo existe
         }
 
         // Eliminar token anterior si existe

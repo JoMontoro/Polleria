@@ -5,9 +5,12 @@
 package com.example.integrador.Entidades_Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDate;
 import lombok.AllArgsConstructor;
@@ -30,5 +33,21 @@ public class Pedidos {
     private Long cliente_id;
     private Long id_pago;
     private Long chef_id;
-     
+    private Long mesa_id;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cliente_id", referencedColumnName = "cliente_id", insertable = false, updatable = false)
+    private Clientes cliente;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_pago", referencedColumnName = "id_pago", insertable = false, updatable = false)
+    private metodos_pago metodoPago;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "chef_id", referencedColumnName = "chefid", insertable = false, updatable = false)
+    private Chefs chef;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "mesa_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private mesas mesa;
 }
